@@ -613,13 +613,33 @@ body {
 /* Responsive Breakpoints */
 @media (max-width: 1024px) {
   .solution-grid {
-    grid-template-columns: 1fr;
-    gap: 30px;
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    gap: 20px;
+    padding-bottom: 20px;
+    margin: 2vh 0;
   }
 
   .team-grid {
-    grid-template-columns: 1fr;
-    gap: 30px;
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    gap: 20px;
+    padding-bottom: 20px;
+    margin-top: 2vh;
+  }
+
+  .solution-item, .team-member-card {
+    flex: 0 0 85%;
+    scroll-snap-align: center;
+    max-width: none;
   }
 
   .snap-section {
@@ -634,8 +654,8 @@ body {
 
 @media (max-width: 768px) {
   .snap-section {
-    padding-top: 100px;
-    padding-bottom: 40px;
+    padding-top: 80px;
+    padding-bottom: 30px;
   }
 
   .main-header {
@@ -644,8 +664,13 @@ body {
     background-color: rgba(0, 0, 0, 0.95);
   }
 
+  .site-logo {
+    font-size: 24px;
+    letter-spacing: 4px;
+  }
+
   .header-container {
-    padding: 0 40px;
+    padding: 0 20px;
   }
 
   .nav-menu {
@@ -675,7 +700,12 @@ body {
   }
 
   .stats-row {
-    gap: 40px;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .stat-val {
+    font-size: 48px;
   }
 
   .stat-lbl {
