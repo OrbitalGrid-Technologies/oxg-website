@@ -674,10 +674,6 @@ body {
     justify-content: flex-start;
   }
 
-  .mobile-swipe-hint {
-    display: block;
-  }
-
   .slide-title {
     font-size: 32px;
   }
@@ -783,4 +779,10 @@ body {
   0% { opacity: 0.3; }
   50% { opacity: 1; }
   100% { opacity: 0.3; }
+}
+
+@media (max-width: 768px) {
+  .mobile-swipe-hint {
+    display: block;
+  }
 }
