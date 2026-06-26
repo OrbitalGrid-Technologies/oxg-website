@@ -59,7 +59,7 @@ body {
 /* Content Section */
 .snap-section {
   position: relative;
-  min-height: 100vh;
+  height: 100vh;
   width: 100%;
   scroll-snap-align: start;
   scroll-snap-stop: always;
@@ -67,6 +67,7 @@ body {
   flex-direction: column;
   justify-content: center;
   padding: calc(var(--header-height) + 60px) 10% 80px 10%;
+  overflow: hidden;
 }
 
 /* Class-based Monochrome Backgrounds (No images, pure CSS depth) */
