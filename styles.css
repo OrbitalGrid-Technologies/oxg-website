@@ -647,52 +647,57 @@ body {
 
 @media (max-width: 768px) {
   body {
-    overflow: visible;
+    overflow: hidden;
   }
 
   .scroll-container {
-    height: auto;
-    overflow-y: visible;
-    scroll-snap-type: none;
+    height: 100vh;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
     display: block;
   }
 
   .snap-section {
-    height: auto;
+    height: 100vh;
     min-height: 100vh;
-    scroll-snap-align: none;
-    padding-top: 100px;
-    padding-bottom: 60px;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    padding-top: 70px;
+    padding-bottom: 20px;
     justify-content: center;
     width: 100%;
-    overflow-y: visible;
+    overflow: hidden;
   }
 
   .slide-title {
-    font-size: 32px;
+    font-size: 22px;
+    margin-bottom: 10px;
   }
 
   .slide-subtitle {
-    font-size: 18px;
+    font-size: 14px;
+    margin-bottom: 10px;
   }
 
-  .slide-desc-text {
-    font-size: 15px;
+  .slide-desc-text, .text-large {
+    font-size: 13px;
+    line-height: 1.4;
   }
 
   .final-headline {
-    font-size: 32px;
+    font-size: 26px;
+    margin-bottom: 10px;
   }
 
   .main-header {
-    height: auto;
-    padding: 15px 0;
+    height: 60px;
+    padding: 10px 0;
     background-color: rgba(0, 0, 0, 0.95);
   }
 
   .site-logo {
-    font-size: 24px;
-    letter-spacing: 4px;
+    font-size: 20px;
+    letter-spacing: 3px;
   }
 
   .header-container {
@@ -708,15 +713,15 @@ body {
     left: 0;
     background-color: rgba(0, 0, 0, 0.95);
     backdrop-filter: blur(10px);
-    padding: 30px 20px;
+    padding: 20px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     margin-left: 0;
-    gap: 15px;
+    gap: 10px;
   }
 
   .nav-item {
-    font-size: 16px;
-    padding: 10px 0;
+    font-size: 14px;
+    padding: 8px 0;
   }
 
   .nav-menu.mobile-active {
@@ -734,26 +739,67 @@ body {
 
   .stats-row {
     flex-direction: column;
-    gap: 20px;
+    gap: 15px;
+    margin-top: 5px;
   }
 
   .stat-val {
-    font-size: 40px;
+    font-size: 32px;
+  }
+
+  .stat-unit {
+    font-size: 20px;
   }
 
   .stat-lbl {
+    font-size: 11px;
     white-space: normal;
+    margin-top: 2px;
+  }
+
+  .solution-grid {
+    gap: 12px;
+    margin: 2vh 0;
+  }
+
+  .team-grid {
+    gap: 12px;
+    margin-top: 2vh;
+  }
+
+  .solution-item, .team-member-card {
+    padding: 16px;
+  }
+
+  .solution-item h3 {
+    font-size: 14px;
+    margin-bottom: 6px;
+  }
+
+  .solution-item p {
+    font-size: 12px;
+    line-height: 1.4;
+  }
+
+  .team-member-card h3 {
+    font-size: 16px;
+  }
+
+  .member-role {
+    font-size: 10px;
   }
 
   .footer-container {
     flex-direction: column;
     align-items: flex-start;
-    gap: 24px;
+    gap: 10px;
+    padding-top: 10px;
   }
 
   .footer-right {
     align-items: flex-start;
     text-align: left;
+    gap: 5px;
   }
 }
 
