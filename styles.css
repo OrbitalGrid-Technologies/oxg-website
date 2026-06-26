@@ -614,37 +614,25 @@ body {
 /* Responsive Breakpoints */
 @media (max-width: 1024px) {
   .solution-grid {
-    display: flex;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    overflow-y: hidden;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-    gap: 20px;
-    padding-bottom: 20px;
-    margin: 2vh 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+    margin: 4vh 0;
   }
 
   .team-grid {
-    display: flex;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    overflow-y: hidden;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-    gap: 20px;
-    padding-bottom: 20px;
-    margin-top: 2vh;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+    margin-top: 4vh;
   }
 
   .solution-item, .team-member-card {
-    flex: 0 0 85%;
-    scroll-snap-align: center;
     max-width: none;
-    background: rgba(255, 255, 255, 0.03);
+    background: rgba(255, 255, 255, 0.02);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 8px;
-    padding: 24px;
+    padding: 32px;
   }
 
   .snap-section {
