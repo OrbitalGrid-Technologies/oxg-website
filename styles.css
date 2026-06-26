@@ -662,10 +662,14 @@ body {
     min-height: 100vh;
     scroll-snap-align: start;
     scroll-snap-stop: always;
-    padding: 80px 20px 20px 20px; /* Maximize width to reduce text wrap height */
-    justify-content: flex-start; /* Start from top so titles are never cut off */
+    padding: 80px 20px 20px 20px;
+    justify-content: center; /* Center short sections (Hero, Problem) perfectly */
     width: 100%;
     overflow: hidden;
+  }
+
+  .section-solution, .section-team {
+    justify-content: flex-start; /* Top-align tall sections so they don't cut off at the top */
   }
 
   .slide-title {
