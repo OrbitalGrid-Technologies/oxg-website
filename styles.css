@@ -624,22 +624,8 @@ body {
   }
 
   .snap-section {
-    height: auto;
-    min-height: 100vh;
-    scroll-snap-align: none;
-    scroll-snap-stop: none;
     padding-top: 120px;
     padding-bottom: 80px;
-  }
-
-  .scroll-container {
-    height: auto;
-    overflow-y: visible;
-    scroll-snap-type: none;
-  }
-
-  body {
-    overflow-y: auto;
   }
 
   .main-footer {
