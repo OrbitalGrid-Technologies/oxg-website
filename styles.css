@@ -647,22 +647,35 @@ body {
 
 @media (max-width: 768px) {
   body {
-    overflow: visible;
+    overflow: hidden;
   }
 
   .scroll-container {
-    height: auto;
-    overflow-y: visible;
-    scroll-snap-type: none;
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+    width: 100vw;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
   }
 
   .snap-section {
-    height: auto;
+    flex: 0 0 100vw;
+    width: 100vw;
+    height: 100vh;
     min-height: 100vh;
-    scroll-snap-align: none;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    overflow-y: auto;
     padding-top: 100px;
     padding-bottom: 60px;
-    justify-content: center;
+    justify-content: flex-start;
+  }
+
+  .mobile-swipe-hint {
+    display: block;
   }
 
   .slide-title {
@@ -752,4 +765,22 @@ body {
     align-items: flex-start;
     text-align: left;
   }
+}
+
+/* Mobile Swipe Hint */
+.mobile-swipe-hint {
+  display: none;
+  font-family: var(--font-heading);
+  font-size: 14px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  margin-top: 30px;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { opacity: 0.3; }
+  50% { opacity: 1; }
+  100% { opacity: 0.3; }
 }
