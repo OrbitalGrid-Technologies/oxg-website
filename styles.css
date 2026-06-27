@@ -653,19 +653,19 @@ body {
   .scroll-container {
     height: 100svh;
     overflow-y: scroll;
-    scroll-snap-type: y mandatory;
+    scroll-snap-type: none; /* Disable forced snapping on mobile so tall content is readable */
     display: block;
   }
 
   .snap-section {
-    height: 100svh;
+    height: auto;
     min-height: 100svh;
     scroll-snap-align: start;
     scroll-snap-stop: always;
-    padding: 80px 20px 20px 20px;
+    padding: 80px 20px 40px 20px;
     justify-content: center; /* Center short sections (Hero, Problem) perfectly */
     width: 100%;
-    overflow: hidden;
+    overflow: visible; /* Allow tall content to expand */
   }
 
   .slide-content {
