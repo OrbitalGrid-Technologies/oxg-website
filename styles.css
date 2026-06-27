@@ -662,18 +662,14 @@ body {
     min-height: 100svh;
     scroll-snap-align: start;
     scroll-snap-stop: always;
-    padding: 80px 20px 20px 20px;
-    justify-content: center; /* Center short sections (Hero, Problem) perfectly */
+    padding: 70px 25px 25px 25px; /* Adjust padding for bigger text */
+    justify-content: center; /* Center short sections perfectly */
     width: 100%;
     overflow: hidden;
   }
 
   .slide-content {
-    padding-top: 0;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
+    padding-top: 0; /* Remove unnecessary top padding on mobile to save space */
   }
 
   .section-solution, .section-team {
@@ -681,7 +677,7 @@ body {
   }
 
   .slide-title {
-    font-size: 52px;
+    font-size: 52px; /* Huge font to fill space */
     margin-bottom: 15px;
     line-height: 1.05;
   }
@@ -697,13 +693,13 @@ body {
   }
 
   .final-headline {
-    font-size: 38px;
-    margin-bottom: 15px;
+    font-size: 52px;
+    margin-bottom: 20px;
   }
 
   .main-header {
-    height: 60px;
-    padding: 10px 0;
+    height: 70px;
+    padding: 12px 0;
     background-color: rgba(0, 0, 0, 0.95);
   }
 
@@ -756,7 +752,8 @@ body {
   }
 
   .stat-val {
-    font-size: 96px;
+    font-size: 96px; /* Massive stats to fill problem page */
+    line-height: 1;
   }
 
   .stat-unit {
@@ -766,7 +763,7 @@ body {
   .stat-lbl {
     font-size: 20px;
     white-space: normal;
-    margin-top: 8px;
+    margin-top: 5px;
   }
 
   .solution-grid {
