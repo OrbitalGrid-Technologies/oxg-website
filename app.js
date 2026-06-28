@@ -109,34 +109,34 @@ document.addEventListener('DOMContentLoaded', () => {
   const ctx = canvas.getContext('2d');
 
   // ── Constants ───────────────────────────────────────────────────────────────
-  const D2R        = Math.PI / 180;
+  const D2R = Math.PI / 180;
   const GLOBE_FRAC = 0.285;       // globe radius / min(W, H)
-  const OUTER_FRAC = 0.50;        // outer edge of hex field
-  const STAR_N     = 160;
+  const OUTER_FRAC = 0.40;        // outer edge of hex field
+  const STAR_N = 160;
 
-  const HEX_SIZE   = 11;
-  const GAP        = 1.5;
+  const HEX_SIZE = 5;
+  const GAP = 2;
 
   const EARTH_ROT_SPD = 0.000016;   // rad/ms  (very slow, ~10° per minute)
 
   // ── Mutable state ───────────────────────────────────────────────────────────
   let W, H, cx, cy, globeR, outerR, dpr = 1;
-  let stars  = [];
-  let hexes  = [];
+  let stars = [];
+  let hexes = [];
   let landFeature = null;
-  let geoProj     = null;
+  let geoProj = null;
 
   // ── Resize / setup ──────────────────────────────────────────────────────────
   function resize() {
-    dpr    = window.devicePixelRatio || 1;
-    W      = canvas.offsetWidth;
-    H      = canvas.offsetHeight;
-    canvas.width  = W * dpr;
+    dpr = window.devicePixelRatio || 1;
+    W = canvas.offsetWidth;
+    H = canvas.offsetHeight;
+    canvas.width = W * dpr;
     canvas.height = H * dpr;
     ctx.setTransform(1, 0, 0, 1, 0, 0);
     ctx.scale(dpr, dpr);
-    cx     = W * 0.64;
-    cy     = H * 0.50;
+    cx = W * 0.64;
+    cy = H * 0.50;
     globeR = Math.min(W, H) * GLOBE_FRAC;
     outerR = Math.min(W, H) * OUTER_FRAC;
     buildStars();
@@ -147,10 +147,10 @@ document.addEventListener('DOMContentLoaded', () => {
   // ── Stars ───────────────────────────────────────────────────────────────────
   function buildStars() {
     stars = Array.from({ length: STAR_N }, () => ({
-      x:  Math.random() * W,
-      y:  Math.random() * H,
-      r:  0.25 + Math.random() * 0.85,
-      a:  0.04  + Math.random() * 0.30,
+      x: Math.random() * W,
+      y: Math.random() * H,
+      r: 0.25 + Math.random() * 0.85,
+      a: 0.04 + Math.random() * 0.30,
       tw: Math.random() * Math.PI * 2,       // twinkle phase
       ts: 0.0004 + Math.random() * 0.0009,   // twinkle speed
     }));
@@ -178,10 +178,10 @@ document.addEventListener('DOMContentLoaded', () => {
           let opacity = edgeDist > maxFade ? 1 : (edgeDist / maxFade);
           // Calculate angle relative to center for the revolving effect
           const angle = Math.atan2(hy, hx);
-          
-          hexes.push({ 
-            x: cx + hx, 
-            y: cy + hy, 
+
+          hexes.push({
+            x: cx + hx,
+            y: cy + hy,
             dist,
             angle,
             opacity: Math.max(0, opacity),
@@ -210,7 +210,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function hexPath(x, y, size) {
     ctx.beginPath();
     for (let i = 0; i < 6; i++) {
-      const a  = (Math.PI / 3) * i - Math.PI / 6;
+      const a = (Math.PI / 3) * i - Math.PI / 6;
       i === 0
         ? ctx.moveTo(x + size * Math.cos(a), y + size * Math.sin(a))
         : ctx.lineTo(x + size * Math.cos(a), y + size * Math.sin(a));
@@ -225,15 +225,15 @@ document.addEventListener('DOMContentLoaded', () => {
     hexes.forEach(hex => {
       // 1. Base subtle pulsing
       const basePulse = 0.03 + 0.03 * Math.sin(ts * 0.0015 + hex.pOff);
-      
+
       // 2. Revolving wave sweeping around the earth
       // We use Math.sin() with the hex angle minus time to create a rotating wave.
       // Math.max(0, ...) ensures only a crest of the wave is visible.
       const wave = Math.max(0, Math.sin(hex.angle - ts * revolveSpeed));
-      
+
       // Combine base pulse and a bright sweeping wave
       const pulse = basePulse + (wave * 0.15);
-      
+
       const strokeA = hex.opacity * pulse;
 
       hexPath(hex.x, hex.y, HEX_SIZE);
@@ -258,9 +258,9 @@ document.addEventListener('DOMContentLoaded', () => {
       cx - globeR * 0.30, cy - globeR * 0.32, 0,
       cx, cy, globeR
     );
-    hl.addColorStop(0,    'rgba(14,24,54,0.55)');
+    hl.addColorStop(0, 'rgba(14,24,54,0.55)');
     hl.addColorStop(0.65, 'rgba(5,10,25,0.15)');
-    hl.addColorStop(1,    'rgba(0,0,0,0)');
+    hl.addColorStop(1, 'rgba(0,0,0,0)');
     ctx.fillStyle = hl;
     ctx.fill();
 
@@ -279,7 +279,7 @@ document.addEventListener('DOMContentLoaded', () => {
       ctx.beginPath();
       pg(landFeature);
       ctx.strokeStyle = 'rgba(255,255,255,0.22)';
-      ctx.lineWidth   = 0.6;
+      ctx.lineWidth = 0.6;
       ctx.stroke();
       ctx.restore();
     }
@@ -293,19 +293,19 @@ document.addEventListener('DOMContentLoaded', () => {
       cx + globeR * 0.38, cy + globeR * 0.18, globeR * 0.1,
       cx + globeR * 0.38, cy + globeR * 0.18, globeR * 1.55
     );
-    term.addColorStop(0,    'rgba(0,0,0,0)');
+    term.addColorStop(0, 'rgba(0,0,0,0)');
     term.addColorStop(0.55, 'rgba(0,0,0,0)');
-    term.addColorStop(1,    'rgba(0,0,0,0.52)');
+    term.addColorStop(1, 'rgba(0,0,0,0.52)');
     ctx.fillStyle = term;
     ctx.fillRect(cx - globeR, cy - globeR, globeR * 2, globeR * 2);
     ctx.restore();
 
     // 5. Atmospheric limb glow — blue halo at globe edge
     const atm = ctx.createRadialGradient(cx, cy, globeR * 0.82, cx, cy, globeR * 1.22);
-    atm.addColorStop(0,    'rgba(50,115,235,0)');
+    atm.addColorStop(0, 'rgba(50,115,235,0)');
     atm.addColorStop(0.38, 'rgba(50,115,235,0.085)');
     atm.addColorStop(0.72, 'rgba(30,85,210,0.038)');
-    atm.addColorStop(1,    'rgba(20,60,190,0)');
+    atm.addColorStop(1, 'rgba(20,60,190,0)');
     ctx.beginPath();
     ctx.arc(cx, cy, globeR * 1.22, 0, Math.PI * 2);
     ctx.fillStyle = atm;
@@ -315,7 +315,7 @@ document.addEventListener('DOMContentLoaded', () => {
     ctx.beginPath();
     ctx.arc(cx, cy, globeR, 0, Math.PI * 2);
     ctx.strokeStyle = 'rgba(255,255,255,0.20)';
-    ctx.lineWidth   = 0.9;
+    ctx.lineWidth = 0.9;
     ctx.stroke();
 
     ctx.restore();
