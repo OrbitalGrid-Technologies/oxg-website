@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Download OXG Logo</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap');
+    body {
+      background: #000;
+      color: white;
+      font-family: 'Montserrat', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .preview-container {
+      background: #050505;
+      padding: 40px;
+      border: 1px solid #333;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+    button {
+      padding: 14px 28px;
+      font-size: 14px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      cursor: pointer;
+      background: white;
+      color: black;
+      border: none;
+      font-weight: 700;
+      transition: all 0.2s ease;
+    }
+    button:hover {
+      background: #ddd;
+    }
+  </style>
+</head>
+<body>
+  <div class="preview-container">
+    <canvas id="logoCanvas" width="800" height="300"></canvas>
+  </div>
+  <button id="downloadBtn">Download Transparent PNG</button>
+
+  <script>
+    // Wait for the Google Font to load before drawing to canvas
+    document.fonts.ready.then(() => {
+      const canvas = document.getElementById('logoCanvas');
+      const ctx = canvas.getContext('2d');
+      
+      const width = canvas.width;
+      const height = canvas.height;
+      
+      // Keep canvas transparent!
+      ctx.clearRect(0, 0, width, height);
+      
+      const fontSize = 160;
+      const letterSpacing = 30; // scaled up letter-spacing
+      
+      // Calculate text widths
+      ctx.font = `600 ${fontSize}px Montserrat`;
+      const oWidth = ctx.measureText('O').width;
+      const gWidth = ctx.measureText('G').width;
+      
+      ctx.font = `300 ${fontSize}px Montserrat`;
+      const xWidth = ctx.measureText('X').width;
+      
+      const totalWidth = oWidth + letterSpacing + xWidth + letterSpacing + gWidth;
+      
+      let currentX = (width - totalWidth) / 2;
+      const centerY = height / 2 + 15;
+      
+      // 1. Draw 'O' with the exact same clip-path geometry
+      ctx.save();
+      
+      // In CSS, clip-path works on the bounding box. Let's estimate the bounding box height.
+      const boxHeight = fontSize * 1.1; 
+      const boxY = centerY - boxHeight / 2 - 10;
+      
+      ctx.beginPath();
+      // clip-path: polygon(0 0, 80% 0, 30% 50%, 50% 50%, 100% 0, 100% 100%, 0 100%);
+      ctx.moveTo(currentX, boxY);
+      ctx.lineTo(currentX + oWidth * 0.80, boxY);
+      ctx.lineTo(currentX + oWidth * 0.30, boxY + boxHeight * 0.50);
+      ctx.lineTo(currentX + oWidth * 0.50, boxY + boxHeight * 0.50);
+      ctx.lineTo(currentX + oWidth * 1.00, boxY);
+      ctx.lineTo(currentX + oWidth * 1.00, boxY + boxHeight);
+      ctx.lineTo(currentX, boxY + boxHeight);
+      ctx.closePath();
+      ctx.clip();
+      
+      ctx.font = `600 ${fontSize}px Montserrat`;
+      ctx.fillStyle = '#ffffff';
+      ctx.textAlign = 'left';
+      ctx.textBaseline = 'middle';
+      ctx.fillText('O', currentX, centerY);
+      ctx.restore();
+      
+      // 2. Draw 'X' (Thin font)
+      currentX += oWidth + letterSpacing;
+      ctx.font = `300 ${fontSize}px Montserrat`;
+      ctx.fillStyle = '#ffffff';
+      ctx.fillText('X', currentX, centerY);
+      
+      // 3. Draw 'G'
+      currentX += xWidth + letterSpacing;
+      ctx.font = `600 ${fontSize}px Montserrat`;
+      ctx.fillText('G', currentX, centerY);
+      
+      // Set up download
+      document.getElementById('downloadBtn').onclick = () => {
+        const link = document.createElement('a');
+        link.download = 'OXG_Logo_Transparent.png';
+        link.href = canvas.toDataURL('image/png');
+        link.click();
+      };
+    });
+  </script>
+</body>
+</html>

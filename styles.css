@@ -1,5 +1,5 @@
 @import url('https://fonts.cdnfonts.com/css/d-din');
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap');
 
 *,
 *::before,
@@ -150,11 +150,19 @@ body {
 .site-logo {
   font-family: 'Montserrat', sans-serif;
   font-size: 38px;
-  font-weight: 900;
+  font-weight: 600;
   letter-spacing: 8px;
   color: var(--text-white);
   text-decoration: none;
   transition: opacity 0.3s ease;
+}
+
+.logo-o {
+  display: inline-block;
+  letter-spacing: 0;
+  margin-right: 8px;
+  /* Thin diagonal slit through the top-right to keep it looking like an 'O' */
+  clip-path: polygon(0 0, 80% 0, 30% 50%, 50% 50%, 100% 0, 100% 100%, 0 100%);
 }
 
 .logo-x {
