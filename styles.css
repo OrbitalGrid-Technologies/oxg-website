@@ -1,4 +1,5 @@
 @import url('https://fonts.cdnfonts.com/css/d-din');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;800;900&display=swap');
 
 *,
 *::before,
@@ -147,14 +148,17 @@ body {
 }
 
 .site-logo {
-  font-family: var(--font-heading);
-  font-size: 36px;
-  font-weight: 500;
-  /* Adjusted to match Starlink's sleeker weight */
-  letter-spacing: 6px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 38px;
+  font-weight: 900;
+  letter-spacing: 8px;
   color: var(--text-white);
   text-decoration: none;
   transition: opacity 0.3s ease;
+}
+
+.logo-x {
+  font-weight: 300;
 }
 
 .site-logo:hover {

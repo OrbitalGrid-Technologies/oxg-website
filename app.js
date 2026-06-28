@@ -114,7 +114,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const OUTER_FRAC = 0.40;        // outer edge of hex field
   const STAR_N = 160;
 
-  const HEX_SIZE = 5;
+  const HEX_SIZE = 9;
   const GAP = 2;
 
   const EARTH_ROT_SPD = 0.000016;   // rad/ms  (very slow, ~10° per minute)
