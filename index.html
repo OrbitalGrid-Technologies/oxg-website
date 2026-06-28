@@ -62,9 +62,10 @@
 
     <!-- Section 1: Hero -->
     <section id="hero" class="snap-section section-hero">
+      <canvas id="heroCanvas" aria-hidden="true"></canvas>
       <div class="slide-content">
         <div class="slide-header-group">
-          <h1 class="slide-title">Edge Cell Towers in Space</h1>
+          <h1 class="slide-title">Building Edge Cell Towers in Space</h1>
           <p class="slide-subtitle">Persistent connectivity and compute for satellites.</p>
           <p class="slide-desc-text">Turning isolated spacecraft into an intelligent orbital network.</p>
         </div>
@@ -211,6 +212,8 @@
 
   </main>
 
+  <script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/topojson-client@3/dist/topojson-client.min.js"></script>
   <script src="app.js"></script>
 </body>
 
