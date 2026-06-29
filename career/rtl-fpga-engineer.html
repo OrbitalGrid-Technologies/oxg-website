@@ -207,57 +207,39 @@
       });
     }
 
-    // Form submission → Web3Forms AJAX
+    // Form submission → compose mailto
     const form = document.getElementById('applyForm');
-    const submitBtn = form ? form.querySelector('button[type="submit"]') : null;
-
     if (form) {
-      form.addEventListener('submit', function(e) {
+      form.addEventListener('submit', (e) => {
         e.preventDefault();
-        
-        if (submitBtn) {
-          submitBtn.textContent = 'SENDING...';
-          submitBtn.disabled = true;
-        }
 
-        const formData = new FormData(form);
-        formData.append("access_key", "40a19136-f078-4086-8d75-ac394af1540b");
-        formData.append("subject", "New Application: RTL / FPGA Engineer");
-        formData.append("from_name", "OXG Careers");
+        const name = document.getElementById('applicantName').value.trim();
+        const email = document.getElementById('applicantEmail').value.trim();
+        const phone = document.getElementById('applicantPhone').value.trim();
+        const linkedin = document.getElementById('applicantLinkedin').value.trim();
+        const message = document.getElementById('applicantMessage').value.trim();
+        const resume = document.getElementById('applicantResume').value.trim();
 
-        fetch('https://api.web3forms.com/submit', {
-          method: 'POST',
-          headers: {
-            'Accept': 'application/json'
-          },
-          body: formData
-        })
-        .then(async (response) => {
-          let json = await response.json();
-          if (response.status === 200) {
-            form.innerHTML = `
-              <div class="apply-success">
-                <h3>Application Sent!</h3>
-                <p>Thanks for applying. We have received your details and resume, and will get back to you shortly.</p>
-              </div>
-            `;
-          } else {
-            console.error("Web3Forms Error:", json);
-            alert("Error: " + (json.message || "Something went wrong! Please try again."));
-            if (submitBtn) {
-              submitBtn.textContent = 'SUBMIT APPLICATION';
-              submitBtn.disabled = false;
-            }
-          }
-        })
-        .catch(error => {
-          console.error("Fetch Error:", error);
-          alert("Something went wrong! Please check your connection and try again.");
-          if (submitBtn) {
-            submitBtn.textContent = 'SUBMIT APPLICATION';
-            submitBtn.disabled = false;
-          }
-        });
+        const subject = encodeURIComponent(`Application: RTL / FPGA Engineer — ${name}`);
+        const body = encodeURIComponent(
+          `Name: ${name}\n` +
+          `Email: ${email}\n` +
+          `Phone: ${phone || 'Not provided'}\n` +
+          `LinkedIn: ${linkedin || 'Not provided'}\n` +
+          `Resume Link: ${resume}\n\n` +
+          `Why OXG:\n${message}`
+        );
+
+        window.location.href = `mailto:info@orbitalgrid.space?subject=${subject}&body=${body}`;
+
+        // Show confirmation
+        form.innerHTML = `
+          <div class="apply-success">
+            <h3>Almost there!</h3>
+            <p>Your email client should open with a pre-filled application. Hit send and you're done.</p>
+            <p class="apply-success-note">If your email client didn't open, send your application directly to <a href="mailto:info@orbitalgrid.space">info@orbitalgrid.space</a></p>
+          </div>
+        `;
       });
     }
   </script>
