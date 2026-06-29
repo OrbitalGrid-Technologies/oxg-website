@@ -29,7 +29,7 @@
 
   <!-- Font: D-DIN is imported in styles.css -->
 
-  <link rel="stylesheet" href="styles.css?v=7">
+  <link rel="stylesheet" href="styles.css?v=8">
 </head>
 
 <body>
@@ -42,9 +42,11 @@
       </a>
 
       <nav class="nav-menu" id="navMenu">
+        <a href="#challenge" class="nav-item">CHALLENGE</a>
         <a href="#platform" class="nav-item">PLATFORM</a>
         <a href="#about" class="nav-item">TEAM</a>
-        <a href="#contact" class="nav-item">CONTACT</a>
+        <a href="#contact" class="nav-item">IMPACT</a>
+        <a href="#careers" class="nav-item">CAREERS</a>
       </nav>
 
       <div class="header-actions">
@@ -70,7 +72,7 @@
           <p class="slide-desc-text">Turning isolated spacecraft into an intelligent orbital network.</p>
         </div>
         <div class="slide-footer-group">
-          <a href="#contact" class="cta-btn border-btn slide-cta">CONTACT US</a>
+          <a href="#careers" class="cta-btn border-btn slide-cta">JOIN US</a>
         </div>
       </div>
     </section>
@@ -194,10 +196,25 @@
           <h2 class="final-headline">74% Offline.<br>90% Discarded.<br><span class="highlight-muted">Not Anymore.</span>
           </h2>
           <p class="final-subtext">Persistent connectivity and compute for satellites.</p>
-          <div class="final-actions">
-            <a href="mailto:info@orbitalgrid.space?subject=Inquiry" class="cta-btn border-btn">GET IN TOUCH</a>
-          </div>
-          <a href="mailto:info@orbitalgrid.space" class="final-email-link">info@orbitalgrid.space</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 6: Careers -->
+    <section id="careers" class="snap-section section-careers">
+      <div class="slide-content">
+        <div class="slide-header-group">
+          <h2 class="slide-title">Join The Mission</h2>
+          <p class="slide-desc-text text-large">We're building the infrastructure layer of space. If that excites you, we'd love to hear from you.</p>
+        </div>
+        <div class="careers-grid" id="careersGrid">
+          <!-- Dynamically populated from jobs.json -->
+        </div>
+        <div class="slide-footer-group">
+          <p class="careers-fallback" id="careersFallback" style="display:none;">
+            No open positions right now. Drop us a line at
+            <a href="mailto:info@orbitalgrid.space">info@orbitalgrid.space</a>
+          </p>
         </div>
       </div>
 

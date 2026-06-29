@@ -88,6 +88,93 @@ document.addEventListener('DOMContentLoaded', () => {
     observer.observe(section);
   });
 
+  // --- Careers: Dynamic Job Listings from jobs.json ---
+  const careersGrid = document.getElementById('careersGrid');
+  const careersFallback = document.getElementById('careersFallback');
+
+  if (careersGrid) {
+    fetch('jobs.json')
+      .then(res => {
+        if (!res.ok) throw new Error('Failed to load jobs');
+        return res.json();
+      })
+      .then(jobs => {
+        if (!jobs || jobs.length === 0) {
+          if (careersFallback) careersFallback.style.display = 'block';
+          return;
+        }
+
+        jobs.forEach(job => {
+          const card = document.createElement('div');
+          card.className = 'job-card';
+          card.id = `job-${job.id}`;
+
+          // Title
+          const title = document.createElement('h3');
+          title.className = 'job-card__title';
+          title.textContent = job.title;
+          card.appendChild(title);
+
+          // Meta tags row
+          const meta = document.createElement('div');
+          meta.className = 'job-card__meta';
+
+          if (job.department) {
+            const dept = document.createElement('span');
+            dept.className = 'job-card__tag';
+            dept.textContent = job.department;
+            meta.appendChild(dept);
+          }
+          if (job.location) {
+            const loc = document.createElement('span');
+            loc.className = 'job-card__tag';
+            loc.textContent = job.location;
+            meta.appendChild(loc);
+          }
+          if (job.type) {
+            const type = document.createElement('span');
+            type.className = 'job-card__tag';
+            type.textContent = job.type;
+            meta.appendChild(type);
+          }
+
+          card.appendChild(meta);
+
+          // Description
+          if (job.description) {
+            const desc = document.createElement('p');
+            desc.className = 'job-card__desc';
+            desc.textContent = job.description;
+            card.appendChild(desc);
+          }
+
+          // Actions row
+          const actions = document.createElement('div');
+          actions.className = 'job-card__actions';
+
+          if (job.jdUrl) {
+            const apply = document.createElement('a');
+            apply.className = 'job-card__apply';
+            apply.href = job.jdUrl + '#apply';
+            apply.textContent = 'APPLY →';
+            actions.appendChild(apply);
+
+            const jd = document.createElement('a');
+            jd.className = 'job-card__jd-link';
+            jd.href = job.jdUrl;
+            jd.textContent = 'VIEW DETAILS';
+            actions.appendChild(jd);
+          }
+
+          card.appendChild(actions);
+          careersGrid.appendChild(card);
+        });
+      })
+      .catch(() => {
+        if (careersFallback) careersFallback.style.display = 'block';
+      });
+  }
+
 });
 
 /* ==========================================================================

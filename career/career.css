@@ -1,0 +1,326 @@
+/* ============================================================
+   Career / JD Page Styles
+   ============================================================ */
+
+.career-page-body {
+  overflow-y: auto;
+  background-color: var(--bg-darkest);
+}
+
+.career-page {
+  min-height: 100vh;
+  padding-top: var(--header-height);
+}
+
+.career-header {
+  background-color: rgba(0, 0, 0, 0.95);
+  backdrop-filter: blur(12px);
+}
+
+/* --- JD Container --- */
+.jd-container {
+  max-width: 820px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+/* --- JD Hero --- */
+.jd-hero {
+  padding: 80px 0 50px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.jd-breadcrumb {
+  font-family: var(--font-heading);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 28px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.jd-breadcrumb a {
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.25s ease;
+}
+
+.jd-breadcrumb a:hover {
+  color: var(--text-white);
+}
+
+.jd-title {
+  font-family: var(--font-heading);
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--text-white);
+  line-height: 1.1;
+  margin-bottom: 24px;
+}
+
+.jd-meta {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 32px;
+}
+
+.jd-tag {
+  font-family: var(--font-heading);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  padding: 6px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.jd-apply-hero-btn {
+  margin-top: 4px;
+}
+
+/* --- JD Body --- */
+.jd-body {
+  padding: 60px 0;
+}
+
+.jd-section {
+  margin-bottom: 48px;
+}
+
+.jd-section:last-child {
+  margin-bottom: 0;
+}
+
+.jd-section h2 {
+  font-family: var(--font-heading);
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-white);
+  margin-bottom: 18px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.10);
+}
+
+.jd-section p {
+  font-size: 15px;
+  font-weight: 300;
+  color: var(--text-dimmed);
+  line-height: 1.7;
+}
+
+.jd-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.jd-section ul li {
+  font-size: 15px;
+  font-weight: 300;
+  color: var(--text-dimmed);
+  line-height: 1.7;
+  padding-left: 20px;
+  position: relative;
+  margin-bottom: 10px;
+}
+
+.jd-section ul li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 11px;
+  width: 5px;
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.35);
+}
+
+/* --- Apply Section --- */
+.jd-apply {
+  padding: 70px 0 80px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  background: radial-gradient(circle at 50% 0%, #0d0d12 0%, #000000 80%);
+}
+
+.jd-apply h2 {
+  font-family: var(--font-heading);
+  font-size: clamp(24px, 3vw, 36px);
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--text-white);
+  margin-bottom: 10px;
+}
+
+.jd-apply-subtitle {
+  font-size: 15px;
+  font-weight: 300;
+  color: var(--text-dimmed);
+  margin-bottom: 40px;
+}
+
+/* --- Form --- */
+.apply-form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group.full-width {
+  width: 100%;
+}
+
+.form-group label {
+  font-family: var(--font-heading);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.required {
+  color: rgba(255, 100, 100, 0.7);
+}
+
+.form-group input,
+.form-group textarea {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--text-white);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 14px 16px;
+  outline: none;
+  transition: border-color 0.25s ease, background-color 0.25s ease;
+  border-radius: 0;
+  -webkit-appearance: none;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: rgba(255, 255, 255, 0.2);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: rgba(255, 255, 255, 0.35);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.form-hint {
+  font-size: 11px;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.3);
+  margin-top: 2px;
+}
+
+.apply-submit-btn {
+  align-self: flex-start;
+  margin-top: 8px;
+  font-size: 12px;
+  padding: 16px 44px;
+}
+
+/* --- Success State --- */
+.apply-success {
+  padding: 40px 0;
+}
+
+.apply-success h3 {
+  font-family: var(--font-heading);
+  font-size: 24px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--text-white);
+  margin-bottom: 12px;
+}
+
+.apply-success p {
+  font-size: 15px;
+  font-weight: 300;
+  color: var(--text-dimmed);
+  line-height: 1.6;
+  margin-bottom: 8px;
+}
+
+.apply-success-note {
+  margin-top: 16px;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.35);
+}
+
+.apply-success-note a {
+  color: var(--text-white);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* --- Career Footer --- */
+.career-footer {
+  padding: 0 40px 30px;
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+  .jd-container {
+    padding: 0 20px;
+  }
+
+  .jd-hero {
+    padding: 50px 0 35px;
+  }
+
+  .jd-body {
+    padding: 40px 0;
+  }
+
+  .jd-section {
+    margin-bottom: 36px;
+  }
+
+  .jd-apply {
+    padding: 50px 0 60px;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .career-footer {
+    padding: 0 20px 20px;
+  }
+
+  .jd-title {
+    font-size: 28px;
+  }
+}

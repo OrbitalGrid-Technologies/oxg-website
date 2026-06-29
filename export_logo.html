@@ -43,9 +43,9 @@
 </head>
 <body>
   <div class="preview-container">
-    <canvas id="logoCanvas" width="800" height="300"></canvas>
+    <canvas id="logoCanvas" width="800" height="800"></canvas>
   </div>
-  <button id="downloadBtn">Download Transparent PNG</button>
+  <button id="downloadBtn">Download PNG with Black Background</button>
 
   <script>
     // Wait for the Google Font to load before drawing to canvas
@@ -56,11 +56,12 @@
       const width = canvas.width;
       const height = canvas.height;
       
-      // Keep canvas transparent!
-      ctx.clearRect(0, 0, width, height);
+      // Fill with black background
+      ctx.fillStyle = '#000000';
+      ctx.fillRect(0, 0, width, height);
       
-      const fontSize = 160;
-      const letterSpacing = 30; // scaled up letter-spacing
+      const fontSize = 260; // Larger font to fill the square horizontally
+      const letterSpacing = 40; // Scaled up letter-spacing
       
       // Calculate text widths
       ctx.font = `600 ${fontSize}px Montserrat`;
@@ -105,11 +106,14 @@
       currentX += oWidth + letterSpacing;
       ctx.font = `300 ${fontSize}px Montserrat`;
       ctx.fillStyle = '#ffffff';
+      ctx.textBaseline = 'middle';
       ctx.fillText('X', currentX, centerY);
       
       // 3. Draw 'G'
       currentX += xWidth + letterSpacing;
       ctx.font = `600 ${fontSize}px Montserrat`;
+      ctx.fillStyle = '#ffffff';
+      ctx.textBaseline = 'middle';
       ctx.fillText('G', currentX, centerY);
       
       // Set up download
