@@ -93,7 +93,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const careersFallback = document.getElementById('careersFallback');
 
   if (careersGrid) {
-    fetch('jobs.json')
+    fetch('jobs.json?v=2')
       .then(res => {
         if (!res.ok) throw new Error('Failed to load jobs');
         return res.json();
