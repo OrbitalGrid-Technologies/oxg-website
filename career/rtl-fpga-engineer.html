@@ -226,9 +226,13 @@
 
         fetch('https://api.web3forms.com/submit', {
           method: 'POST',
+          headers: {
+            'Accept': 'application/json'
+          },
           body: formData
         })
         .then(async (response) => {
+          let json = await response.json();
           if (response.status === 200) {
             form.innerHTML = `
               <div class="apply-success">
@@ -237,7 +241,8 @@
               </div>
             `;
           } else {
-            alert("Something went wrong! Please try again.");
+            console.error("Web3Forms Error:", json);
+            alert("Error: " + (json.message || "Something went wrong! Please try again."));
             if (submitBtn) {
               submitBtn.textContent = 'SUBMIT APPLICATION';
               submitBtn.disabled = false;
@@ -245,6 +250,7 @@
           }
         })
         .catch(error => {
+          console.error("Fetch Error:", error);
           alert("Something went wrong! Please check your connection and try again.");
           if (submitBtn) {
             submitBtn.textContent = 'SUBMIT APPLICATION';
