@@ -76,31 +76,12 @@
       let currentX = (width - totalWidth) / 2;
       const centerY = height / 2 + 15;
       
-      // 1. Draw 'O' with the exact same clip-path geometry
-      ctx.save();
-      
-      // In CSS, clip-path works on the bounding box. Let's estimate the bounding box height.
-      const boxHeight = fontSize * 1.1; 
-      const boxY = centerY - boxHeight / 2 - 10;
-      
-      ctx.beginPath();
-      // clip-path: polygon(0 0, 80% 0, 30% 50%, 50% 50%, 100% 0, 100% 100%, 0 100%);
-      ctx.moveTo(currentX, boxY);
-      ctx.lineTo(currentX + oWidth * 0.80, boxY);
-      ctx.lineTo(currentX + oWidth * 0.30, boxY + boxHeight * 0.50);
-      ctx.lineTo(currentX + oWidth * 0.50, boxY + boxHeight * 0.50);
-      ctx.lineTo(currentX + oWidth * 1.00, boxY);
-      ctx.lineTo(currentX + oWidth * 1.00, boxY + boxHeight);
-      ctx.lineTo(currentX, boxY + boxHeight);
-      ctx.closePath();
-      ctx.clip();
-      
+      // 1. Draw 'O'
       ctx.font = `600 ${fontSize}px Montserrat`;
       ctx.fillStyle = '#ffffff';
       ctx.textAlign = 'left';
       ctx.textBaseline = 'middle';
       ctx.fillText('O', currentX, centerY);
-      ctx.restore();
       
       // 2. Draw 'X' (Thin font)
       currentX += oWidth + letterSpacing;
