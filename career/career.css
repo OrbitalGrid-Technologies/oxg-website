@@ -2,9 +2,12 @@
    Career / JD Page Styles
    ============================================================ */
 
-.career-page-body {
-  overflow-y: auto;
+html, body.career-page-body {
+  overflow: auto !important;
+  overflow-x: hidden !important;
+  height: auto !important;
   background-color: var(--bg-darkest);
+  -webkit-overflow-scrolling: touch !important;
 }
 
 .career-page {
