@@ -166,9 +166,8 @@
           </div>
 
           <div class="form-group full-width">
-            <label for="applicantResume">Resume / CV Link <span class="required">*</span></label>
-            <input type="url" id="applicantResume" name="resume" required placeholder="Google Drive, Dropbox, or personal website link to your resume">
-            <span class="form-hint">Paste a shareable link to your resume here.</span>
+            <label for="applicantResume">Resume / CV Upload <span class="required">*</span></label>
+            <input type="file" id="applicantResume" name="attachment" accept=".pdf,.doc,.docx" required style="padding: 10px; background: rgba(255, 255, 255, 0.05); cursor: pointer;">
           </div>
 
           <button type="submit" class="cta-btn border-btn apply-submit-btn">SUBMIT APPLICATION</button>
@@ -207,39 +206,51 @@
       });
     }
 
-    // Form submission → compose mailto
+    // Form submission → Web3Forms AJAX
     const form = document.getElementById('applyForm');
+    const submitBtn = form ? form.querySelector('button[type="submit"]') : null;
+
     if (form) {
-      form.addEventListener('submit', (e) => {
+      form.addEventListener('submit', function(e) {
         e.preventDefault();
+        
+        if (submitBtn) {
+          submitBtn.textContent = 'SENDING...';
+          submitBtn.disabled = true;
+        }
 
-        const name = document.getElementById('applicantName').value.trim();
-        const email = document.getElementById('applicantEmail').value.trim();
-        const phone = document.getElementById('applicantPhone').value.trim();
-        const linkedin = document.getElementById('applicantLinkedin').value.trim();
-        const message = document.getElementById('applicantMessage').value.trim();
-        const resume = document.getElementById('applicantResume').value.trim();
+        const formData = new FormData(form);
+        formData.append("access_key", "40a19136-f078-4086-8d75-ac394af1540b");
+        formData.append("subject", "New Application: RTL / FPGA Engineer");
+        formData.append("from_name", "OXG Careers");
 
-        const subject = encodeURIComponent(`Application: RTL / FPGA Engineer — ${name}`);
-        const body = encodeURIComponent(
-          `Name: ${name}\n` +
-          `Email: ${email}\n` +
-          `Phone: ${phone || 'Not provided'}\n` +
-          `LinkedIn: ${linkedin || 'Not provided'}\n` +
-          `Resume Link: ${resume}\n\n` +
-          `Why OXG:\n${message}`
-        );
-
-        window.location.href = `mailto:info@orbitalgrid.space?subject=${subject}&body=${body}`;
-
-        // Show confirmation
-        form.innerHTML = `
-          <div class="apply-success">
-            <h3>Almost there!</h3>
-            <p>Your email client should open with a pre-filled application. Hit send and you're done.</p>
-            <p class="apply-success-note">If your email client didn't open, send your application directly to <a href="mailto:info@orbitalgrid.space">info@orbitalgrid.space</a></p>
-          </div>
-        `;
+        fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          body: formData
+        })
+        .then(async (response) => {
+          if (response.status === 200) {
+            form.innerHTML = `
+              <div class="apply-success">
+                <h3>Application Sent!</h3>
+                <p>Thanks for applying. We have received your details and resume, and will get back to you shortly.</p>
+              </div>
+            `;
+          } else {
+            alert("Something went wrong! Please try again.");
+            if (submitBtn) {
+              submitBtn.textContent = 'SUBMIT APPLICATION';
+              submitBtn.disabled = false;
+            }
+          }
+        })
+        .catch(error => {
+          alert("Something went wrong! Please check your connection and try again.");
+          if (submitBtn) {
+            submitBtn.textContent = 'SUBMIT APPLICATION';
+            submitBtn.disabled = false;
+          }
+        });
       });
     }
   </script>
