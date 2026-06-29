@@ -207,14 +207,33 @@
           <h2 class="slide-title">Join The Mission</h2>
           <p class="slide-desc-text text-large">We're building the infrastructure layer of space. If that excites you, we'd love to hear from you.</p>
         </div>
-        <div class="careers-grid" id="careersGrid">
-          <!-- Dynamically populated from jobs.json -->
+        
+        <div class="careers-action-group" style="margin-top: 30px;">
+          <button id="openCareersBtn" class="cta-btn border-btn" style="display: none;">SEE CURRENT OPENINGS</button>
         </div>
+
         <div class="slide-footer-group">
           <p class="careers-fallback" id="careersFallback" style="display:none;">
             No open positions right now. Drop us a line at
             <a href="mailto:info@orbitalgrid.space">info@orbitalgrid.space</a>
           </p>
+        </div>
+      </div>
+
+      <!-- Careers Drawer Overlay -->
+      <div id="careersDrawerOverlay" class="drawer-overlay">
+        <div id="careersDrawer" class="drawer-content">
+          <div class="drawer-header">
+            <h2 class="drawer-title">Current Openings</h2>
+            <button id="closeCareersBtn" class="drawer-close" aria-label="Close Drawer">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            </button>
+          </div>
+          <div class="drawer-body">
+            <div class="careers-grid" id="careersGrid">
+              <!-- Dynamically populated from jobs.json -->
+            </div>
+          </div>
         </div>
       </div>
 

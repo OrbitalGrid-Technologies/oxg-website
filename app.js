@@ -91,6 +91,26 @@ document.addEventListener('DOMContentLoaded', () => {
   // --- Careers: Dynamic Job Listings from jobs.json ---
   const careersGrid = document.getElementById('careersGrid');
   const careersFallback = document.getElementById('careersFallback');
+  const openCareersBtn = document.getElementById('openCareersBtn');
+  const careersDrawerOverlay = document.getElementById('careersDrawerOverlay');
+  const closeCareersBtn = document.getElementById('closeCareersBtn');
+
+  // Drawer open/close logic
+  if (openCareersBtn && careersDrawerOverlay && closeCareersBtn) {
+    openCareersBtn.addEventListener('click', () => {
+      careersDrawerOverlay.classList.add('active');
+    });
+
+    closeCareersBtn.addEventListener('click', () => {
+      careersDrawerOverlay.classList.remove('active');
+    });
+
+    careersDrawerOverlay.addEventListener('click', (e) => {
+      if (e.target === careersDrawerOverlay) {
+        careersDrawerOverlay.classList.remove('active');
+      }
+    });
+  }
 
   if (careersGrid) {
     fetch('jobs.json?v=2')
@@ -102,6 +122,12 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!jobs || jobs.length === 0) {
           if (careersFallback) careersFallback.style.display = 'block';
           return;
+        }
+
+        // Show the open button and set job count
+        if (openCareersBtn) {
+          openCareersBtn.style.display = 'inline-block';
+          openCareersBtn.textContent = `SEE CURRENT OPENINGS (${jobs.length})`;
         }
 
         jobs.forEach(job => {
