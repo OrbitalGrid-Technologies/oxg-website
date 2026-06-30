@@ -73,7 +73,7 @@ body {
 
 /* Class-based Monochrome Backgrounds (No images, pure CSS depth) */
 .section-hero {
-  background: radial-gradient(circle at 70% 30%, #0d0d12 0%, #000000 80%);
+  background: radial-gradient(ellipse at 68% 28%, #0a0d1f 0%, #04040a 55%, #000000 100%);
 }
 
 /* Hero canvas animation */
@@ -88,19 +88,29 @@ body {
 }
 
 .section-problem {
-  background: #000000;
+  background:
+    radial-gradient(ellipse at 20% 60%, #07091a 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 20%, #060810 0%, transparent 55%),
+    #000000;
 }
 
 .section-solution {
-  background: radial-gradient(circle at 30% 70%, #0d0d12 0%, #000000 80%);
+  background:
+    radial-gradient(ellipse at 28% 72%, #080d1e 0%, transparent 58%),
+    radial-gradient(ellipse at 75% 30%, #05060f 0%, transparent 50%),
+    #000000;
 }
 
 .section-team {
-  background: #000000;
+  background:
+    radial-gradient(ellipse at 75% 55%, #07091a 0%, transparent 55%),
+    radial-gradient(ellipse at 15% 25%, #060810 0%, transparent 50%),
+    #000000;
 }
 
 .section-final {
-  background: radial-gradient(circle at center, #0e0e14 0%, #000000 100%);
+  background:
+    radial-gradient(ellipse at 50% 50%, #09091f 0%, #04040c 45%, #000000 100%);
 }
 
 /* Subtle grid overlay */
@@ -624,7 +634,10 @@ body {
 
 /* --- Careers Section Layout --- */
 .section-careers {
-  background: radial-gradient(circle at 60% 40%, #0d0d12 0%, #000000 80%);
+  background:
+    radial-gradient(ellipse at 62% 38%, #080d1e 0%, transparent 58%),
+    radial-gradient(ellipse at 20% 75%, #06070f 0%, transparent 50%),
+    #000000;
 }
 
 .careers-grid {
