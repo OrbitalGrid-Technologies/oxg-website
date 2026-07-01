@@ -345,7 +345,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const wave = Math.max(0, Math.sin(hex.angle - ts * revolveSpeed));
 
       // Combine base pulse and a bright sweeping wave
-      const pulse = basePulse + (wave * 0.15);
+      const pulse = basePulse + (wave * 0.35);
 
       const strokeA = hex.opacity * pulse;
 
