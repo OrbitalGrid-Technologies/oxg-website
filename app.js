@@ -274,43 +274,33 @@ document.addEventListener('DOMContentLoaded', () => {
     hexes = [];
     const w = (HEX_SIZE * 2 + GAP) * Math.cos(Math.PI / 6);
     const h = HEX_SIZE * 1.5 + GAP;
-
-    // Cover entire viewport from globe center
-    const maxExtent = Math.sqrt(
-      Math.pow(Math.max(cx, W - cx), 2) + Math.pow(Math.max(cy, H - cy), 2)
-    ) + HEX_SIZE * 2;
-
-    const cols = Math.ceil(maxExtent / w);
-    const rows = Math.ceil(maxExtent / h);
+    const cols = Math.ceil(outerR * 2 / w);
+    const rows = Math.ceil(outerR * 2 / h);
 
     for (let row = -rows; row <= rows; row++) {
       for (let col = -cols; col <= cols; col++) {
         const hx = col * w + (row % 2 ? w / 2 : 0);
         const hy = row * h;
-        const absX = cx + hx;
-        const absY = cy + hy;
-
-        // Skip if outside viewport
-        if (absX < -HEX_SIZE * 2 || absX > W + HEX_SIZE * 2 ||
-            absY < -HEX_SIZE * 2 || absY > H + HEX_SIZE * 2) continue;
-
         const dist = Math.sqrt(hx * hx + hy * hy);
 
-        // Skip hexes inside the globe
-        if (dist < globeR + HEX_SIZE) continue;
+        if (dist > globeR + HEX_SIZE && dist < outerR) {
+          // Calculate opacity fade based on distance from globe
+          // Fade in starting near globe, fade out near outerR
+          const edgeDist = Math.min(dist - globeR, outerR - dist);
+          const maxFade = 40; // distance over which it fades in/out
+          let opacity = edgeDist > maxFade ? 1 : (edgeDist / maxFade);
+          // Calculate angle relative to center for the revolving effect
+          const angle = Math.atan2(hy, hx);
 
-        // Fade near globe edge
-        const globeFade = Math.min(1, (dist - globeR - HEX_SIZE) / 40);
-        const angle = Math.atan2(hy, hx);
-
-        hexes.push({
-          x: absX,
-          y: absY,
-          dist,
-          angle,
-          opacity: Math.max(0, globeFade),
-          pOff: Math.random() * Math.PI * 2
-        });
+          hexes.push({
+            x: cx + hx,
+            y: cy + hy,
+            dist,
+            angle,
+            opacity: Math.max(0, opacity),
+            pOff: Math.random() * Math.PI * 2 // for subtle pulsing
+          });
+        }
       }
     }
   }
