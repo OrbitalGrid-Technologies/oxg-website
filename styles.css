@@ -73,7 +73,7 @@ body {
 
 /* Class-based Monochrome Backgrounds (No images, pure CSS depth) */
 .section-hero {
-  background: radial-gradient(circle at 70% 30%, #03303b 0%, #011C22 80%);
+  background: #011C22;
 }
 
 /* Hero canvas animation */
@@ -92,7 +92,7 @@ body {
 }
 
 .section-solution {
-  background: radial-gradient(circle at 30% 70%, #03303b 0%, #011C22 80%);
+  background: #011C22;
 }
 
 .section-team {
@@ -100,7 +100,7 @@ body {
 }
 
 .section-final {
-  background: radial-gradient(circle at center, #03303b 0%, #011C22 100%);
+  background: #011C22;
 }
 
 /* Subtle grid overlay */
@@ -624,7 +624,7 @@ body {
 
 /* --- Careers Section Layout --- */
 .section-careers {
-  background: radial-gradient(circle at 60% 40%, #03303b 0%, #011C22 80%);
+  background: #011C22;
 }
 
 .careers-grid {
