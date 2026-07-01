@@ -342,31 +342,26 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function drawHexGrid(ts) {
+    // Speed of the revolution
+    const revolveSpeed = 0.0008;
+
     hexes.forEach(hex => {
       // 1. Base subtle pulsing
-      const basePulse = 0.02 + 0.02 * Math.sin(ts * 0.001 + hex.pOff);
+      const basePulse = 0.03 + 0.03 * Math.sin(ts * 0.0015 + hex.pOff);
 
-      // 2. Random bright glowing/sparking
-      // Math.sin creates a slow oscillation based on random phase
-      let spark = Math.max(0, Math.sin(ts * 0.0008 + hex.pOff * 5));
-      // Raise to a high power so it creates a sharp, brief peak (a "spark")
-      spark = Math.pow(spark, 30); 
+      // 2. Revolving wave sweeping around the earth
+      // We use Math.sin() with the hex angle minus time to create a rotating wave.
+      // Math.max(0, ...) ensures only a crest of the wave is visible.
+      const wave = Math.max(0, Math.sin(hex.angle - ts * revolveSpeed));
 
-      // Combine base pulse and spark
-      const pulse = basePulse + (spark * 0.6);
+      // Combine base pulse and a bright sweeping wave
+      const pulse = basePulse + (wave * 0.35);
 
       const strokeA = hex.opacity * pulse;
 
       hexPath(hex.x, hex.y, HEX_SIZE);
-      
-      // If sparking brightly, add a subtle fill to make it pop
-      if (spark > 0.01) {
-        ctx.fillStyle = `rgba(180, 220, 255, ${hex.opacity * spark * 0.3})`;
-        ctx.fill();
-      }
-
       ctx.strokeStyle = `rgba(255, 255, 255, ${strokeA})`;
-      ctx.lineWidth = 0.5 + spark * 0.8; // Thicken line slightly when glowing
+      ctx.lineWidth = 0.5;
       ctx.stroke();
     });
   }
