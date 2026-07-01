@@ -10,8 +10,8 @@
 }
 
 :root {
-  --bg-darkest: #000000;
-  --bg-dark: #050505;
+  --bg-darkest: #011C22;
+  --bg-dark: #021e25;
   --text-white: #ffffff;
   --text-muted: #8e8e93;
   --text-dimmed: rgba(255, 255, 255, 0.65);
@@ -28,11 +28,11 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: #000000;
+  background: #011C22;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #1c1c1e;
+  background: #0a3039;
 }
 
 html {
@@ -73,7 +73,7 @@ body {
 
 /* Class-based Monochrome Backgrounds (No images, pure CSS depth) */
 .section-hero {
-  background: radial-gradient(circle at 70% 30%, #0d0d12 0%, #000000 80%);
+  background: radial-gradient(circle at 70% 30%, #03303b 0%, #011C22 80%);
 }
 
 /* Hero canvas animation */
@@ -88,19 +88,19 @@ body {
 }
 
 .section-problem {
-  background: #000000;
+  background: #011C22;
 }
 
 .section-solution {
-  background: radial-gradient(circle at 30% 70%, #0d0d12 0%, #000000 80%);
+  background: radial-gradient(circle at 30% 70%, #03303b 0%, #011C22 80%);
 }
 
 .section-team {
-  background: #000000;
+  background: #011C22;
 }
 
 .section-final {
-  background: radial-gradient(circle at center, #0e0e14 0%, #000000 100%);
+  background: radial-gradient(circle at center, #03303b 0%, #011C22 100%);
 }
 
 /* Subtle grid overlay */
@@ -624,7 +624,7 @@ body {
 
 /* --- Careers Section Layout --- */
 .section-careers {
-  background: radial-gradient(circle at 60% 40%, #0d0d12 0%, #000000 80%);
+  background: radial-gradient(circle at 60% 40%, #03303b 0%, #011C22 80%);
 }
 
 .careers-grid {
