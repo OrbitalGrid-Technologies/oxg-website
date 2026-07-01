@@ -363,7 +363,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // 1. Black ocean fill
     ctx.beginPath();
     ctx.arc(cx, cy, globeR, 0, Math.PI * 2);
-    ctx.fillStyle = '#011C22';
+    ctx.fillStyle = '#000000';
     ctx.fill();
 
     // 2. Lit-hemisphere highlight (upper-left warm glow)
