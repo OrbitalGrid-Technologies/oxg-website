@@ -1,4 +1,12 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-  <ellipse cx="50" cy="50" rx="42" ry="20" fill="none" stroke="#000000" stroke-width="7" transform="rotate(-25 50 50)" />
-  <circle cx="15" cy="35" r="7" fill="#000000" />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&amp;display=swap');
+    text {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+      fill: #ffffff;
+    }
+  </style>
+  <circle cx="50" cy="50" r="50" fill="#000000"/>
+  <text x="50%" y="53%" dominant-baseline="middle" text-anchor="middle" font-size="65">O</text>
 </svg>
