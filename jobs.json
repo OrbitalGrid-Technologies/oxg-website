@@ -8,5 +8,15 @@
     "description": "Design and implement high-performance RTL for FPGA-based systems powering orbital edge computing and communication infrastructure.",
     "applyUrl": "mailto:info@orbitalgrid.space?subject=Application%3A%20RTL%20%2F%20FPGA%20Engineer",
     "jdUrl": "career/rtl-fpga-engineer.html"
+  },
+  {
+    "id": "senior-ka-band-phased-array-pcb-designer",
+    "title": "Senior Ka Band Phased Array PCB Designer",
+    "location": "Bengaluru, India - In Person",
+    "type": "Full-time",
+    "department": "Engineering",
+    "description": "Design and develop high-frequency Ka-band phased array PCB antennas for space applications.",
+    "applyUrl": "mailto:info@orbitalgrid.space?subject=Application%3A%20Senior%20Ka%20Band%20Phased%20Array%20PCB%20Designer",
+    "jdUrl": "career/senior_ka_band_phased_array_pcb_engineer.pdf"
   }
 ]
