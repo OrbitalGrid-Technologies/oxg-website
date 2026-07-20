@@ -512,6 +512,7 @@ body {
   justify-content: flex-start;
   align-items: flex-start;
   text-align: left;
+  overflow-y: auto;
 }
 
 .member-info {
@@ -528,6 +529,9 @@ body {
 
 .flip-card-back .member-bio {
   margin-top: 0; /* Reset margin since it was set previously */
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--text-muted);
 }
 
 .member-headshot {
