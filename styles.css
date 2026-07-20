@@ -430,8 +430,8 @@ body {
   background: transparent;
   perspective: 1000px;
   cursor: pointer;
-  height: 400px;
-  max-width: 380px;
+  height: 340px;
+  max-width: 300px;
   width: 100%;
 }
 
@@ -458,7 +458,7 @@ body {
   
   background: rgba(255, 255, 255, 0.015);
   border: 1px solid rgba(255, 255, 255, 0.08);
-  padding: 32px 32px;
+  padding: 24px 24px;
   display: flex;
   flex-direction: column;
   transition: border-color 0.25s ease, background-color 0.25s ease;
@@ -478,8 +478,8 @@ body {
 
 .flip-btn {
   position: absolute;
-  bottom: 24px;
-  right: 24px;
+  bottom: 20px;
+  right: 20px;
   color: var(--text-muted);
   display: flex;
   align-items: center;
@@ -531,11 +531,11 @@ body {
 }
 
 .member-headshot {
-  width: 144px;
-  height: 144px;
+  width: 112px;
+  height: 112px;
   border-radius: 50%;
   object-fit: cover;
-  margin-bottom: 16px;
+  margin-bottom: 12px;
   border: 1px solid rgba(255, 255, 255, 0.15);
 }
 
