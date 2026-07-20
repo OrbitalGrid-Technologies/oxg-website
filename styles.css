@@ -425,33 +425,116 @@ body {
   max-width: 800px;
 }
 
-/* --- Team Member Card Layout --- */
+/* --- Team Member Card Layout (Flip Card) --- */
 .team-member-card {
-  background: rgba(255, 255, 255, 0.015);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  padding: 24px 32px;
+  background: transparent;
+  perspective: 1000px;
+  cursor: pointer;
   height: auto;
+  min-height: 320px;
   max-width: 380px;
   width: 100%;
+}
+
+.flip-card-inner {
+  display: grid;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1);
+  transform-style: preserve-3d;
+}
+
+.team-member-card.flipped .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+  position: relative;
+  grid-area: 1 / 1;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  
+  background: rgba(255, 255, 255, 0.015);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 32px 32px;
+  display: flex;
+  flex-direction: column;
   transition: border-color 0.25s ease, background-color 0.25s ease;
 }
 
-.team-member-card:hover {
+.team-member-card:hover .flip-card-front,
+.team-member-card:hover .flip-card-back {
   border-color: rgba(255, 255, 255, 0.25);
   background: rgba(255, 255, 255, 0.03);
 }
 
-.member-card-main {
-  display: flex;
-  justify-content: space-between;
+.flip-card-front {
+  justify-content: center;
   align-items: center;
-  width: 100%;
+  text-align: center;
+}
+
+.flip-btn {
+  position: absolute;
+  bottom: 24px;
+  right: 24px;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.flip-btn svg {
+  transition: transform 0.3s ease;
+}
+
+.team-member-card:hover .flip-btn {
+  color: var(--text-white);
+}
+
+.team-member-card:hover .flip-btn svg {
+  transform: rotateZ(-90deg);
+}
+
+.flip-btn.close-btn svg {
+  transform: rotateZ(45deg);
+}
+
+.team-member-card:hover .flip-btn.close-btn svg {
+  transform: rotateZ(-45deg);
+}
+
+.flip-card-back {
+  transform: rotateY(180deg);
+  justify-content: flex-start;
+  align-items: flex-start;
+  text-align: left;
 }
 
 .member-info {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 6px;
+}
+
+.flip-card-back .member-social {
+  margin-bottom: 16px;
+  align-self: flex-start;
+}
+
+.flip-card-back .member-bio {
+  margin-top: 0; /* Reset margin since it was set previously */
+}
+
+.member-headshot {
+  width: 144px;
+  height: 144px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 .team-member-card h3 {
@@ -475,6 +558,14 @@ body {
 .member-social {
   display: flex;
   align-items: center;
+}
+
+.member-bio {
+  font-size: 14px;
+  color: var(--text-dimmed);
+  line-height: 1.6;
+  font-weight: 300;
+  margin-top: 18px;
 }
 
 .linkedin-icon-link {
