@@ -95,6 +95,22 @@ body {
   background: radial-gradient(circle at 30% 70%, #0d0d12 0%, #000000 80%);
 }
 
+.section-demo {
+  background: #020308;
+  padding: 0 !important;
+  position: relative;
+  overflow: hidden;
+}
+
+.oxg-sim-app-container {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+}
+
 .section-team {
   background: #000000;
 }

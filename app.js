@@ -462,3 +462,43 @@ document.addEventListener('DOMContentLoaded', () => {
   requestAnimationFrame(animate);
 
 })();
+
+// --- Lazy Deferred Loader for 3D Latency Simulation Demo ---
+(() => {
+  let isDemoLoaded = false;
+
+  const loadDemoModule = async () => {
+    if (isDemoLoaded) return;
+    isDemoLoaded = true;
+    try {
+      await import('./assets/oxg-sim.es.js');
+    } catch (err) {
+      console.warn('OXG Demo module dynamic load:', err);
+    }
+  };
+
+  const demoSection = document.getElementById('demo');
+  if (demoSection) {
+    const scrollContainer = document.querySelector('.scroll-container');
+    const demoObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            loadDemoModule();
+          }
+        });
+      },
+      {
+        root: scrollContainer && scrollContainer.offsetParent ? scrollContainer : null,
+        rootMargin: '300px'
+      }
+    );
+    demoObserver.observe(demoSection);
+  }
+
+  document.querySelectorAll('a[href="#demo"]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      loadDemoModule();
+    });
+  });
+})();
