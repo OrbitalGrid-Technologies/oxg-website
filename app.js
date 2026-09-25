@@ -512,4 +512,11 @@ document.addEventListener('DOMContentLoaded', () => {
       loadDemoModule();
     });
   });
+
+  // Ensure 100% reliable initialization across mobile browsers
+  if (document.readyState === 'complete' || document.readyState === 'interactive') {
+    setTimeout(loadDemoModule, 100);
+  } else {
+    document.addEventListener('DOMContentLoaded', () => setTimeout(loadDemoModule, 100));
+  }
 })();
