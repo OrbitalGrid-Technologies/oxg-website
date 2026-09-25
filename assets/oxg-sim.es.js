@@ -21568,7 +21568,11 @@ class Cv {
     Z(this, "ringTransitionStartTime", 0);
     this.container = e, this.container.className = "oxg-mission-console", this.uiFlags = n ?? yd;
     const s = t ?? Sd;
-    this.config = F_(s, window.location.search), this.container.innerHTML = `
+    if (this.config = F_(s, window.location.search), window.location.search !== "" && !window.location.search.includes("debug=1")) {
+      const _ = window.location.pathname + window.location.hash;
+      window.history.replaceState(null, "", _);
+    }
+    this.container.innerHTML = `
       <div id="oxg-globe-container" class="oxg-globe-container"></div>
       <div id="oxg-header-mount"></div>
       <div id="oxg-metrics-mount"></div>
@@ -21682,9 +21686,14 @@ class Cv {
     });
   }
   onConfigChange(e) {
-    this.config = e;
-    const t = O_(this.config);
-    window.history.replaceState(null, "", `?${t}`), this.recomputeSimulation();
+    if (this.config = e, window.location.search.includes("debug=1")) {
+      const t = O_(this.config);
+      window.history.replaceState(null, "", `?${t}&debug=1`);
+    } else if (window.location.search !== "") {
+      const t = window.location.pathname + window.location.hash;
+      window.history.replaceState(null, "", t);
+    }
+    this.recomputeSimulation();
   }
   startRingTransition() {
     this.isRingTransitioning = !0, this.ringTransitionStartTime = performance.now();
