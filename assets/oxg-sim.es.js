@@ -20330,14 +20330,7 @@ class _v {
   }
 }
 function vv(i) {
-  const e = document.createElement("div");
-  e.className = "oxg-header-brand", e.innerHTML = `
-    <div class="oxg-brand-pill">
-      <span class="oxg-logo-mark">OXG</span>
-      <span class="oxg-brand-name">MISSION CONSOLE</span>
-      <span class="oxg-sim-badge" title="Simulated architecture. Illustrative, not a service commitment.">SIMULATION</span>
-    </div>
-  `, i.appendChild(e);
+  i.innerHTML = "";
 }
 class xv {
   constructor(e) {

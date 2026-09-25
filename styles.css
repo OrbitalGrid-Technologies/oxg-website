@@ -111,6 +111,31 @@ body {
   z-index: 2;
 }
 
+.section-demo #oxg-preset-mount {
+  top: calc(var(--header-height, 75px) + 20px) !important;
+  left: 20px !important;
+}
+
+.section-demo .oxg-metrics-dock {
+  top: calc(var(--header-height, 75px) + 20px) !important;
+  right: 20px !important;
+}
+
+@media (max-width: 768px) {
+  .section-demo #oxg-preset-mount {
+    top: calc(60px + 10px) !important;
+    left: 12px !important;
+    z-index: 200 !important;
+  }
+
+  .section-demo .oxg-metrics-dock {
+    top: calc(60px + 48px) !important;
+    left: 12px !important;
+    right: 12px !important;
+    width: auto !important;
+  }
+}
+
 .section-team {
   background: #000000;
 }
