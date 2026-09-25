@@ -172,6 +172,74 @@ body {
     overflow: hidden !important;
     text-overflow: ellipsis !important;
   }
+
+  /* Universal Mobile Viewport Lock for iPhones and Android */
+  .section-demo {
+    height: 100svh !important;
+    height: 100dvh !important;
+    min-height: 100svh !important;
+    max-height: 100svh !important;
+    overflow: hidden !important;
+  }
+
+  .section-demo .oxg-mission-console {
+    height: 100svh !important;
+    height: 100dvh !important;
+  }
+
+  /* Safe Area Bottom Offsets for iPhones & Android Gesture Navigation */
+  .section-demo .oxg-action-pill-bar {
+    bottom: calc(env(safe-area-inset-bottom, 0px) + 12px) !important;
+  }
+
+  .section-demo .oxg-controls-dock {
+    bottom: calc(env(safe-area-inset-bottom, 0px) + 10px) !important;
+  }
+
+  .section-demo .oxg-rollout-timeline-container {
+    bottom: calc(env(safe-area-inset-bottom, 0px) + 10px) !important;
+  }
+}
+
+/* Minimalist SpaceX-Style Demo Loading Overlay */
+.oxg-demo-loader-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #020308;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 500;
+  transition: opacity 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+  pointer-events: none;
+}
+
+.oxg-loader-spinner {
+  width: 44px;
+  height: 44px;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-top-color: #ffffff;
+  border-radius: 50%;
+  animation: oxg-spin 0.9s linear infinite;
+  margin-bottom: 16px;
+}
+
+.oxg-loader-text {
+  font-family: var(--font-body, 'D-DIN', sans-serif);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: rgba(255, 255, 255, 0.65);
+  text-transform: uppercase;
+}
+
+@keyframes oxg-spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
 .section-team {

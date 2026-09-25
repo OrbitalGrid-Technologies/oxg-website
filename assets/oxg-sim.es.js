@@ -21584,6 +21584,12 @@ class Cv {
       window.history.replaceState(null, "", _);
     }
     this.container.innerHTML = `
+      <!-- SpaceX-Style Minimalist Orbital Loader -->
+      <div id="oxg-demo-loader" class="oxg-demo-loader-overlay">
+        <div class="oxg-loader-spinner"></div>
+        <div class="oxg-loader-text">INITIALIZING ORBITAL SIMULATION...</div>
+      </div>
+
       <div id="oxg-globe-container" class="oxg-globe-container"></div>
       <div id="oxg-header-mount"></div>
       <div id="oxg-metrics-mount"></div>
@@ -21658,7 +21664,12 @@ class Cv {
     const p = this.container.querySelector("#oxg-modals-mount");
     this.assumptionsModal = new bv(p), this.abComparePanel = new Mv(p), this.ctaModal = new Ev(p), this.customOrbitForm = new Tv(p, this.config, (_) => {
       this.config.customerPresets.push(_), this.config.activeCustomerPresetId = _.id, this.presetSelectorPanel.updatePresets(this.config.customerPresets, this.config.activeCustomerPresetId), this.onConfigChange(this.config);
-    }), this.debugPanel = new wv(this.container, this.globeView), this.bindEvents(), this.recomputeSimulation(), this.globeView.addRenderCallback(this.updatePlaybackLoop.bind(this)), window.app = this, window.globeView = this.globeView, window.debugPanel = this.debugPanel;
+    }), this.debugPanel = new wv(this.container, this.globeView), this.bindEvents(), this.recomputeSimulation(), this.globeView.addRenderCallback(this.updatePlaybackLoop.bind(this)), requestAnimationFrame(() => {
+      setTimeout(() => {
+        const _ = this.container.querySelector("#oxg-demo-loader");
+        _ && (_.style.opacity = "0", setTimeout(() => _.remove(), 500));
+      }, 250);
+    }), window.app = this, window.globeView = this.globeView, window.debugPanel = this.debugPanel;
   }
   bindEvents() {
     const e = this.container.querySelectorAll("#btn-toggle-presets, #btn-toggle-presets-mobile"), t = this.container.querySelector(".oxg-preset-selector");
