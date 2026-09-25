@@ -95,6 +95,85 @@ body {
   background: radial-gradient(circle at 30% 70%, #0d0d12 0%, #000000 80%);
 }
 
+.section-demo {
+  background: #020308;
+  padding: 0 !important;
+  position: relative;
+  overflow: hidden;
+}
+
+.oxg-sim-app-container {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+}
+
+.section-demo #oxg-preset-mount {
+  top: calc(var(--header-height, 75px) + 20px) !important;
+  left: 20px !important;
+}
+
+.section-demo .oxg-metrics-dock {
+  top: calc(var(--header-height, 75px) + 20px) !important;
+  right: 20px !important;
+}
+
+@media (max-width: 768px) {
+  .section-demo #oxg-preset-mount {
+    top: calc(60px + 6px) !important;
+    left: 12px !important;
+    z-index: 200 !important;
+  }
+
+  .section-demo .oxg-metrics-dock {
+    top: calc(60px + 40px) !important;
+    left: 12px !important;
+    right: 12px !important;
+    width: auto !important;
+  }
+
+  .section-demo .oxg-kpi-bar {
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 4px !important;
+  }
+
+  .section-demo .oxg-kpi-card {
+    min-width: unset !important;
+    padding: 4px 4px !important;
+    text-align: center !important;
+    background: rgba(13, 13, 18, 0.75) !important;
+    backdrop-filter: blur(8px) !important;
+    border-radius: 4px !important;
+  }
+
+  .section-demo .oxg-kpi-label {
+    font-size: 0.52rem !important;
+    letter-spacing: 0.8px !important;
+    margin-bottom: 2px !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+  }
+
+  .section-demo .oxg-kpi-val {
+    font-size: 0.92rem !important;
+    line-height: 1.0 !important;
+  }
+
+  .section-demo .oxg-kpi-sub {
+    font-size: 0.55rem !important;
+    margin-top: 1px !important;
+    opacity: 0.7 !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+  }
+}
+
 .section-team {
   background: #000000;
 }

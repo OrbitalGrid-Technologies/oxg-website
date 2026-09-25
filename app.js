@@ -462,3 +462,54 @@ document.addEventListener('DOMContentLoaded', () => {
   requestAnimationFrame(animate);
 
 })();
+
+// --- Lazy Deferred Loader for 3D Latency Simulation Demo ---
+(() => {
+  let isDemoLoaded = false;
+
+  const loadDemoModule = async () => {
+    if (isDemoLoaded) return;
+    isDemoLoaded = true;
+    try {
+      const mod = await import('./assets/oxg-sim.es.js');
+      const container = document.getElementById('oxg-sim-app') || document.getElementById('app');
+      if (container && !container.__oxg_mounted__) {
+        container.__oxg_mounted__ = true;
+        if (mod && mod.OXGSim && typeof mod.OXGSim.mount === 'function') {
+          const app = mod.OXGSim.mount(container);
+          window.app = app;
+          window.mainApp = app;
+        } else if (mod && typeof mod.autoMount === 'function') {
+          mod.autoMount();
+        }
+      }
+    } catch (err) {
+      console.warn('OXG Demo module dynamic load error:', err);
+    }
+  };
+
+  const demoSection = document.getElementById('demo');
+  if (demoSection) {
+    const scrollContainer = document.querySelector('.scroll-container');
+    const demoObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            loadDemoModule();
+          }
+        });
+      },
+      {
+        root: scrollContainer && scrollContainer.offsetParent ? scrollContainer : null,
+        rootMargin: '300px'
+      }
+    );
+    demoObserver.observe(demoSection);
+  }
+
+  document.querySelectorAll('a[href="#demo"]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      loadDemoModule();
+    });
+  });
+})();
