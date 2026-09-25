@@ -471,9 +471,20 @@ document.addEventListener('DOMContentLoaded', () => {
     if (isDemoLoaded) return;
     isDemoLoaded = true;
     try {
-      await import('./assets/oxg-sim.es.js');
+      const mod = await import('./assets/oxg-sim.es.js');
+      const container = document.getElementById('oxg-sim-app') || document.getElementById('app');
+      if (container && !container.__oxg_mounted__) {
+        container.__oxg_mounted__ = true;
+        if (mod && mod.OXGSim && typeof mod.OXGSim.mount === 'function') {
+          const app = mod.OXGSim.mount(container);
+          window.app = app;
+          window.mainApp = app;
+        } else if (mod && typeof mod.autoMount === 'function') {
+          mod.autoMount();
+        }
+      }
     } catch (err) {
-      console.warn('OXG Demo module dynamic load:', err);
+      console.warn('OXG Demo module dynamic load error:', err);
     }
   };
 
