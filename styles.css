@@ -111,26 +111,11 @@ body {
   z-index: 2;
 }
 
-.section-demo .oxg-left-sidebar {
+.section-demo #oxg-preset-mount {
   position: absolute !important;
   top: calc(var(--header-height, 75px) + 20px) !important;
   left: 20px !important;
   z-index: 100 !important;
-  display: flex !important;
-  flex-direction: column !important;
-  gap: 16px !important;
-  width: 180px !important;
-  pointer-events: auto !important;
-}
-
-.section-demo #oxg-preset-mount,
-.section-demo #oxg-legend-mount,
-.section-demo .oxg-legend-dock {
-  position: relative !important;
-  top: auto !important;
-  left: auto !important;
-  bottom: auto !important;
-  width: 100% !important;
 }
 
 .section-demo .oxg-metrics-dock {
@@ -139,38 +124,50 @@ body {
 }
 
 /* Map Legend Dock Overrides for Website Section */
+.section-demo #oxg-legend-mount,
+.section-demo .oxg-legend-dock {
+  position: absolute !important;
+  left: 20px !important;
+  bottom: 54px !important;
+  z-index: 100 !important;
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  width: auto !important;
+}
+
 .section-demo .oxg-legend-container {
   background: var(--bg-elevated, #0d0d12) !important;
   border: 1px solid var(--border-color, rgba(255, 255, 255, 0.15)) !important;
   border-radius: 0px !important;
-  padding: 10px 14px !important;
+  padding: 6px 10px !important;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8) !important;
   backdrop-filter: blur(8px) !important;
   -webkit-backdrop-filter: blur(8px) !important;
-  width: 100% !important;
 }
 
 .section-demo .oxg-legend-header {
-  font-size: 0.72rem !important;
+  font-size: 0.62rem !important;
   font-weight: 700 !important;
   color: var(--text-muted, #8e8e93) !important;
-  letter-spacing: 2px !important;
+  letter-spacing: 1.5px !important;
   text-transform: uppercase !important;
-  margin-bottom: 8px !important;
+  margin-bottom: 4px !important;
   font-family: var(--font-ui, sans-serif) !important;
 }
 
 .section-demo .oxg-legend-grid {
   display: flex !important;
   flex-direction: column !important;
-  gap: 6px !important;
+  gap: 4px !important;
 }
 
 .section-demo .oxg-legend-item {
   display: flex !important;
   align-items: center !important;
-  gap: 10px !important;
-  font-size: 0.72rem !important;
+  gap: 6px !important;
+  font-size: 0.65rem !important;
   font-weight: 600 !important;
   color: #ffffff !important;
   font-family: var(--font-ui, sans-serif) !important;
@@ -199,6 +196,40 @@ body {
 }
 
 @media (max-width: 768px) {
+  .section-demo #oxg-legend-mount,
+  .section-demo .oxg-legend-dock {
+    left: 12px !important;
+    bottom: calc(env(safe-area-inset-bottom, 0px) + 20px) !important;
+    z-index: 50 !important;
+    width: auto !important;
+  }
+
+  .section-demo .oxg-legend-container {
+    padding: 2px 6px !important;
+    background: rgba(13, 13, 18, 0.85) !important;
+    backdrop-filter: blur(8px) !important;
+    border-radius: 0px !important;
+  }
+
+  .section-demo .oxg-legend-header {
+    display: none !important;
+  }
+
+  .section-demo .oxg-legend-grid {
+    flex-direction: row !important;
+    gap: 8px !important;
+    align-items: center !important;
+  }
+
+  .section-demo .oxg-legend-item {
+    font-size: 0.54rem !important;
+    gap: 3px !important;
+  }
+
+  .section-demo .oxg-legend-sub {
+    display: none !important;
+  }
+
   .section-demo #oxg-preset-mount {
     top: calc(60px + 6px) !important;
     left: 12px !important;
