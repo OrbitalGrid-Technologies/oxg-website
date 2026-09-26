@@ -122,6 +122,7 @@ body {
 }
 
 /* Map Legend Dock Overrides for Website Section */
+.section-demo #oxg-legend-mount,
 .section-demo .oxg-legend-dock {
   position: absolute !important;
   left: 20px !important;
@@ -130,6 +131,7 @@ body {
   display: block !important;
   visibility: visible !important;
   opacity: 1 !important;
+  pointer-events: auto !important;
 }
 
 .section-demo .oxg-legend-container {
