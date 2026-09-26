@@ -19767,7 +19767,7 @@ class hv {
     const o = new Set(e.map((_) => _.id));
     for (const [_, g] of this.arcLines.entries())
       o.has(_) || (g.visible = !1);
-    const l = 80, c = r ? new Be("#FF1744") : new Be("#330810"), d = r ? 0.95 : 0.2, h = r ? 3.2 : 1, u = typeof window < "u" ? window.innerWidth : 1920, p = typeof window < "u" ? window.innerHeight : 1080;
+    const l = 80, c = r ? new Be("#FF1744") : new Be("#800020"), d = r ? 0.95 : 0.25, h = r ? 3.2 : 1.2, u = typeof window < "u" ? window.innerWidth : 1920, p = typeof window < "u" ? window.innerHeight : 1080;
     for (const _ of e) {
       let g = this.arcLines.get(_.id);
       if (!g) {
@@ -19953,7 +19953,7 @@ class fv {
   updateSatellites(e, t, n, s, r = 1, a = 1, o) {
     const l = n ?? {
       sizePx: 6
-    }, c = new Be("#FF1744"), d = new Be("#440c14");
+    }, c = new Be("#FF1744"), d = new Be("#800020");
     for (; this.customerSprites.length < e.length; ) {
       const g = new Us({
         map: this.glowTexture,
@@ -19977,7 +19977,7 @@ class fv {
         const L = l.sizePx * 2.2 / window.innerHeight;
         M.scale.set(L, L, 1);
       } else {
-        b.color.copy(d), b.opacity = 0.45;
+        b.color.copy(d), b.opacity = 0.5;
         const L = l.sizePx * 0.9 / window.innerHeight;
         M.scale.set(L, L, 1);
       }
