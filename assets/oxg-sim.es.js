@@ -19767,7 +19767,7 @@ class hv {
     const o = new Set(e.map((_) => _.id));
     for (const [_, g] of this.arcLines.entries())
       o.has(_) || (g.visible = !1);
-    const l = 80, c = r ? new Be("#FF1744") : new Be("#800020"), d = r ? 0.95 : 0.25, h = r ? 3.2 : 1.2, u = typeof window < "u" ? window.innerWidth : 1920, p = typeof window < "u" ? window.innerHeight : 1080;
+    const l = 80, c = r ? new Be("#FF1744") : new Be("#D32F2F"), d = r ? 0.95 : 0.55, h = r ? 3.2 : 2, u = typeof window < "u" ? window.innerWidth : 1920, p = typeof window < "u" ? window.innerHeight : 1080;
     for (const _ of e) {
       let g = this.arcLines.get(_.id);
       if (!g) {
@@ -19953,7 +19953,7 @@ class fv {
   updateSatellites(e, t, n, s, r = 1, a = 1, o) {
     const l = n ?? {
       sizePx: 6
-    }, c = new Be("#FF1744"), d = new Be("#800020");
+    }, c = new Be("#FF1744"), d = new Be("#D32F2F");
     for (; this.customerSprites.length < e.length; ) {
       const g = new Us({
         map: this.glowTexture,
@@ -19977,8 +19977,8 @@ class fv {
         const L = l.sizePx * 2.2 / window.innerHeight;
         M.scale.set(L, L, 1);
       } else {
-        b.color.copy(d), b.opacity = 0.5;
-        const L = l.sizePx * 0.9 / window.innerHeight;
+        b.color.copy(d), b.opacity = 0.85;
+        const L = l.sizePx * 1.5 / window.innerHeight;
         M.scale.set(L, L, 1);
       }
     }
@@ -21559,22 +21559,42 @@ class Cv {
   render() {
     this.element.innerHTML = `
       <div class="oxg-legend-container">
-        <div class="oxg-legend-header">MAP LEGEND</div>
+        <div class="oxg-scenario-header oxg-legend-header">MAP LEGEND</div>
         <div class="oxg-legend-grid">
-          <div class="oxg-legend-item">
-            <span class="oxg-legend-symbol oxg-symbol-gs" title="Ground Station"></span>
-            <span class="oxg-legend-text">Ground Stations</span>
+          <!-- Ground Station Marker (Circle within Square) -->
+          <div class="oxg-legend-item" title="Ground Station">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" class="oxg-legend-icon">
+              <rect x="1" y="1" width="12" height="12" stroke="#ffffff" stroke-width="1.5" fill="none"/>
+              <circle cx="7" cy="7" r="3" fill="#ffffff"/>
+            </svg>
+            <span class="oxg-legend-label">Ground Station</span>
           </div>
-          <div class="oxg-legend-item">
-            <span class="oxg-legend-symbol oxg-symbol-oxg-sat" title="OXG Relay Satellite"></span>
-            <span class="oxg-legend-text">OXG Satellites</span>
+
+          <!-- OXG Relay Satellite (-- o -- white) -->
+          <div class="oxg-legend-item" title="OXG Relay Satellite">
+            <svg width="24" height="12" viewBox="0 0 24 12" fill="none" class="oxg-legend-icon">
+              <line x1="1" y1="6" x2="23" y2="6" stroke="#ffffff" stroke-width="1.5" opacity="0.6"/>
+              <circle cx="12" cy="6" r="3" fill="#ffffff"/>
+            </svg>
+            <span class="oxg-legend-label">OXG Satellites</span>
           </div>
-          <div class="oxg-legend-item">
-            <div class="oxg-symbol-cust-wrap">
-              <span class="oxg-legend-symbol oxg-symbol-cust-maroon" title="Out of Contact (Maroon)"></span>
-              <span class="oxg-legend-symbol oxg-symbol-cust-red" title="Connected (Bright Red)"></span>
-            </div>
-            <span class="oxg-legend-text">Your Satellite <span class="oxg-legend-status-sub">(Offline / Connected)</span></span>
+
+          <!-- Customer Satellite: Offline (-- o -- crimson maroon) -->
+          <div class="oxg-legend-item" title="Your Satellite - Out of Contact">
+            <svg width="24" height="12" viewBox="0 0 24 12" fill="none" class="oxg-legend-icon">
+              <line x1="1" y1="6" x2="23" y2="6" stroke="#D32F2F" stroke-width="1.8"/>
+              <circle cx="12" cy="6" r="3.5" fill="#D32F2F"/>
+            </svg>
+            <span class="oxg-legend-label">Your Sat <span class="oxg-legend-sub">(Offline)</span></span>
+          </div>
+
+          <!-- Customer Satellite: Connected (-- o -- bright red) -->
+          <div class="oxg-legend-item" title="Your Satellite - Connected">
+            <svg width="24" height="12" viewBox="0 0 24 12" fill="none" class="oxg-legend-icon">
+              <line x1="1" y1="6" x2="23" y2="6" stroke="#FF1744" stroke-width="2.5"/>
+              <circle cx="12" cy="6" r="4" fill="#FF1744"/>
+            </svg>
+            <span class="oxg-legend-label">Your Sat <span class="oxg-legend-sub">(Connected)</span></span>
           </div>
         </div>
       </div>
