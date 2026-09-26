@@ -1,6 +1,6 @@
 var Rd = Object.defineProperty;
 var Cd = (i, e, t) => e in i ? Rd(i, e, { enumerable: !0, configurable: !0, writable: !0, value: t }) : i[e] = t;
-var Z = (i, e, t) => Cd(i, typeof e != "symbol" ? e + "" : e, t);
+var j = (i, e, t) => Cd(i, typeof e != "symbol" ? e + "" : e, t);
 /**
  * @license
  * Copyright 2010-2024 Three.js Authors
@@ -3982,8 +3982,8 @@ class Hs extends Ct {
       }
       for (let ce = 0; ce < P; ce++)
         for (let Ee = 0; Ee < R; Ee++) {
-          const Ne = u + Ee + $ * ce, Ze = u + Ee + $ * (ce + 1), F = u + (Ee + 1) + $ * (ce + 1), j = u + (Ee + 1) + $ * ce;
-          l.push(Ne, Ze, j), l.push(Ze, F, j), W += 6;
+          const Ne = u + Ee + $ * ce, Ze = u + Ee + $ * (ce + 1), F = u + (Ee + 1) + $ * (ce + 1), Z = u + (Ee + 1) + $ * ce;
+          l.push(Ne, Ze, Z), l.push(Ze, F, Z), W += 6;
         }
       o.addGroup(p, W, E), p += W, u += te;
     }
@@ -8912,7 +8912,7 @@ function Vp(i, e) {
         if (re === void 0 && (te === "instanceMatrix" && y.instanceMatrix && (re = y.instanceMatrix), te === "instanceColor" && y.instanceColor && (re = y.instanceColor)), re !== void 0) {
           const ce = re.normalized, Ee = re.itemSize, Ne = e.get(re);
           if (Ne === void 0) continue;
-          const Ze = Ne.buffer, F = Ne.type, j = Ne.bytesPerElement, Y = F === i.INT || F === i.UNSIGNED_INT || re.gpuType === Po;
+          const Ze = Ne.buffer, F = Ne.type, Z = Ne.bytesPerElement, Y = F === i.INT || F === i.UNSIGNED_INT || re.gpuType === Po;
           if (re.isInterleavedBufferAttribute) {
             const Q = re.data, oe = Q.stride, _e = re.offset;
             if (Q.isInstancedInterleavedBuffer) {
@@ -8929,8 +8929,8 @@ function Vp(i, e) {
                 Ee / W.locationSize,
                 F,
                 ce,
-                oe * j,
-                (_e + Ee / W.locationSize * Re) * j,
+                oe * Z,
+                (_e + Ee / W.locationSize * Re) * Z,
                 Y
               );
           } else {
@@ -8948,8 +8948,8 @@ function Vp(i, e) {
                 Ee / W.locationSize,
                 F,
                 ce,
-                Ee * j,
-                Ee / W.locationSize * Q * j,
+                Ee * Z,
+                Ee / W.locationSize * Q * Z,
                 Y
               );
           }
@@ -11056,12 +11056,12 @@ function _g(i, e, t, n, s, r, a) {
     const ce = $.morphAttributes.position || $.morphAttributes.normal || $.morphAttributes.color, Ee = ce !== void 0 ? ce.length : 0;
     let Ne = 0;
     $.morphAttributes.position !== void 0 && (Ne = 1), $.morphAttributes.normal !== void 0 && (Ne = 2), $.morphAttributes.color !== void 0 && (Ne = 3);
-    let Ze, F, j, Y;
+    let Ze, F, Z, Y;
     if (re) {
       const rt = Gt[re];
       Ze = rt.vertexShader, F = rt.fragmentShader;
     } else
-      Ze = E.vertexShader, F = E.fragmentShader, l.update(E), j = l.getVertexShaderID(E), Y = l.getFragmentShaderID(E);
+      Ze = E.vertexShader, F = E.fragmentShader, l.update(E), Z = l.getVertexShaderID(E), Y = l.getFragmentShaderID(E);
     const Q = i.getRenderTarget(), oe = i.state.buffers.depth.getReversed(), _e = O.isInstancedMesh === !0, Re = O.isBatchedMesh === !0, qe = !!E.map, Ye = !!E.matcap, mt = !!te, N = !!E.aoMap, zt = !!E.lightMap, me = !!E.bumpMap, De = !!E.normalMap, ge = !!E.displacementMap, $e = !!E.emissiveMap, Se = !!E.metalnessMap, T = !!E.roughnessMap, v = E.anisotropy > 0, B = E.clearcoat > 0, K = E.dispersion > 0, ee = E.iridescence > 0, q = E.sheen > 0, Ce = E.transmission > 0, de = v && !!E.anisotropyMap, ve = B && !!E.clearcoatMap, Je = B && !!E.clearcoatNormalMap, ie = B && !!E.clearcoatRoughnessMap, xe = ee && !!E.iridescenceMap, Ie = ee && !!E.iridescenceThicknessMap, Ue = q && !!E.sheenColorMap, ye = q && !!E.sheenRoughnessMap, Ke = !!E.specularMap, Ge = !!E.specularColorMap, ct = !!E.specularIntensityMap, D = Ce && !!E.transmissionMap, le = Ce && !!E.thicknessMap, X = !!E.gradientMap, J = !!E.alphaMap, pe = E.alphaTest > 0, ue = !!E.alphaHash, ze = !!E.extensions;
     let gt = ei;
     E.toneMapped && (Q === null || Q.isXRRenderTarget === !0) && (gt = i.toneMapping);
@@ -11072,7 +11072,7 @@ function _g(i, e, t, n, s, r, a) {
       vertexShader: Ze,
       fragmentShader: F,
       defines: E.defines,
-      customVertexShaderID: j,
+      customVertexShaderID: Z,
       customFragmentShaderID: Y,
       isRawShaderMaterial: E.isRawShaderMaterial === !0,
       glslVersion: E.glslVersion,
@@ -11909,7 +11909,7 @@ function Ig(i, e) {
   W.indexOf("WebGL") !== -1 ? (te = parseFloat(/^WebGL (\d)/.exec(W)[1]), z = te >= 1) : W.indexOf("OpenGL ES") !== -1 && (te = parseFloat(/^OpenGL ES (\d)/.exec(W)[1]), z = te >= 2);
   let re = null, ce = {};
   const Ee = i.getParameter(i.SCISSOR_BOX), Ne = i.getParameter(i.VIEWPORT), Ze = new ut().fromArray(Ee), F = new ut().fromArray(Ne);
-  function j(D, le, X, J) {
+  function Z(D, le, X, J) {
     const pe = new Uint8Array(4), ue = i.createTexture();
     i.bindTexture(D, ue), i.texParameteri(D, i.TEXTURE_MIN_FILTER, i.NEAREST), i.texParameteri(D, i.TEXTURE_MAG_FILTER, i.NEAREST);
     for (let ze = 0; ze < X; ze++)
@@ -11917,7 +11917,7 @@ function Ig(i, e) {
     return ue;
   }
   const Y = {};
-  Y[i.TEXTURE_2D] = j(i.TEXTURE_2D, i.TEXTURE_2D, 1), Y[i.TEXTURE_CUBE_MAP] = j(i.TEXTURE_CUBE_MAP, i.TEXTURE_CUBE_MAP_POSITIVE_X, 6), Y[i.TEXTURE_2D_ARRAY] = j(i.TEXTURE_2D_ARRAY, i.TEXTURE_2D_ARRAY, 1, 1), Y[i.TEXTURE_3D] = j(i.TEXTURE_3D, i.TEXTURE_3D, 1, 1), r.setClear(0, 0, 0, 1), a.setClear(1), o.setClear(0), Q(i.DEPTH_TEST), a.setFunc(es), me(!1), De(el), Q(i.CULL_FACE), N(Qn);
+  Y[i.TEXTURE_2D] = Z(i.TEXTURE_2D, i.TEXTURE_2D, 1), Y[i.TEXTURE_CUBE_MAP] = Z(i.TEXTURE_CUBE_MAP, i.TEXTURE_CUBE_MAP_POSITIVE_X, 6), Y[i.TEXTURE_2D_ARRAY] = Z(i.TEXTURE_2D_ARRAY, i.TEXTURE_2D_ARRAY, 1, 1), Y[i.TEXTURE_3D] = Z(i.TEXTURE_3D, i.TEXTURE_3D, 1, 1), r.setClear(0, 0, 0, 1), a.setClear(1), o.setClear(0), Q(i.DEPTH_TEST), a.setFunc(es), me(!1), De(el), Q(i.CULL_FACE), N(Qn);
   function Q(D) {
     d[D] !== !0 && (i.enable(D), d[D] = !0);
   }
@@ -12434,7 +12434,7 @@ function Ng(i, e, t, n, s, r, a) {
   function W(T, v) {
     const B = n.get(T);
     if (T.version > 0 && B.__version !== T.version) {
-      j(B, T, v);
+      Z(B, T, v);
       return;
     }
     t.bindTexture(i.TEXTURE_CUBE_MAP, B.__webglTexture, i.TEXTURE0 + v);
@@ -12592,7 +12592,7 @@ function Ng(i, e, t, n, s, r, a) {
     }
     T.__version = v.version;
   }
-  function j(T, v, B) {
+  function Z(T, v, B) {
     if (v.image.length !== 6) return;
     const K = Ze(T, v), ee = v.source;
     t.bindTexture(i.TEXTURE_CUBE_MAP, T.__webglTexture, i.TEXTURE0 + B);
@@ -13078,27 +13078,27 @@ class Vg extends Ti {
     const E = [R, P], y = new Fg();
     let A = null, k = null;
     this.cameraAutoUpdate = !0, this.enabled = !1, this.isPresenting = !1, this.getController = function(F) {
-      let j = b[F];
-      return j === void 0 && (j = new Ma(), b[F] = j), j.getTargetRaySpace();
+      let Z = b[F];
+      return Z === void 0 && (Z = new Ma(), b[F] = Z), Z.getTargetRaySpace();
     }, this.getControllerGrip = function(F) {
-      let j = b[F];
-      return j === void 0 && (j = new Ma(), b[F] = j), j.getGripSpace();
+      let Z = b[F];
+      return Z === void 0 && (Z = new Ma(), b[F] = Z), Z.getGripSpace();
     }, this.getHand = function(F) {
-      let j = b[F];
-      return j === void 0 && (j = new Ma(), b[F] = j), j.getHandSpace();
+      let Z = b[F];
+      return Z === void 0 && (Z = new Ma(), b[F] = Z), Z.getHandSpace();
     };
     function O(F) {
-      const j = x.indexOf(F.inputSource);
-      if (j === -1)
+      const Z = x.indexOf(F.inputSource);
+      if (Z === -1)
         return;
-      const Y = b[j];
+      const Y = b[Z];
       Y !== void 0 && (Y.update(F.inputSource, F.frame, c || a), Y.dispatchEvent({ type: F.type, data: F.inputSource }));
     }
     function G() {
       s.removeEventListener("select", O), s.removeEventListener("selectstart", O), s.removeEventListener("selectend", O), s.removeEventListener("squeeze", O), s.removeEventListener("squeezestart", O), s.removeEventListener("squeezeend", O), s.removeEventListener("end", G), s.removeEventListener("inputsourceschange", $);
       for (let F = 0; F < b.length; F++) {
-        const j = x[F];
-        j !== null && (x[F] = null, b[F].disconnect(j));
+        const Z = x[F];
+        Z !== null && (x[F] = null, b[F].disconnect(Z));
       }
       A = null, k = null, g.reset(), e.setRenderTarget(f), p = null, u = null, h = null, s = null, M = null, Ze.stop(), n.isPresenting = !1, e.setPixelRatio(w), e.setSize(L.width, L.height, !1), n.dispatchEvent({ type: "sessionend" });
     }
@@ -13121,14 +13121,14 @@ class Vg extends Ti {
     }, this.setSession = async function(F) {
       if (s = F, s !== null) {
         if (f = e.getRenderTarget(), s.addEventListener("select", O), s.addEventListener("selectstart", O), s.addEventListener("selectend", O), s.addEventListener("squeeze", O), s.addEventListener("squeezestart", O), s.addEventListener("squeezeend", O), s.addEventListener("end", G), s.addEventListener("inputsourceschange", $), m.xrCompatible !== !0 && await t.makeXRCompatible(), w = e.getPixelRatio(), e.getSize(L), s.renderState.layers === void 0) {
-          const j = {
+          const Z = {
             antialias: m.antialias,
             alpha: !0,
             depth: m.depth,
             stencil: m.stencil,
             framebufferScaleFactor: r
           };
-          p = new XRWebGLLayer(s, t, j), s.updateRenderState({ baseLayer: p }), e.setPixelRatio(1), e.setSize(p.framebufferWidth, p.framebufferHeight, !1), M = new Si(
+          p = new XRWebGLLayer(s, t, Z), s.updateRenderState({ baseLayer: p }), e.setPixelRatio(1), e.setSize(p.framebufferWidth, p.framebufferHeight, !1), M = new Si(
             p.framebufferWidth,
             p.framebufferHeight,
             {
@@ -13139,8 +13139,8 @@ class Vg extends Ti {
             }
           );
         } else {
-          let j = null, Y = null, Q = null;
-          m.depth && (Q = m.stencil ? t.DEPTH24_STENCIL8 : t.DEPTH_COMPONENT24, j = m.stencil ? ss : Ji, Y = m.stencil ? is : yi);
+          let Z = null, Y = null, Q = null;
+          m.depth && (Q = m.stencil ? t.DEPTH24_STENCIL8 : t.DEPTH_COMPONENT24, Z = m.stencil ? ss : Ji, Y = m.stencil ? is : yi);
           const oe = {
             colorFormat: t.RGBA8,
             depthFormat: Q,
@@ -13152,7 +13152,7 @@ class Vg extends Ti {
             {
               format: dn,
               type: Fn,
-              depthTexture: new ld(u.textureWidth, u.textureHeight, Y, void 0, void 0, void 0, void 0, void 0, void 0, j),
+              depthTexture: new ld(u.textureWidth, u.textureHeight, Y, void 0, void 0, void 0, void 0, void 0, void 0, Z),
               stencilBuffer: m.stencil,
               colorSpace: e.outputColorSpace,
               samples: m.antialias ? 4 : 0,
@@ -13169,12 +13169,12 @@ class Vg extends Ti {
       return g.getDepthTexture();
     };
     function $(F) {
-      for (let j = 0; j < F.removed.length; j++) {
-        const Y = F.removed[j], Q = x.indexOf(Y);
+      for (let Z = 0; Z < F.removed.length; Z++) {
+        const Y = F.removed[Z], Q = x.indexOf(Y);
         Q >= 0 && (x[Q] = null, b[Q].disconnect(Y));
       }
-      for (let j = 0; j < F.added.length; j++) {
-        const Y = F.added[j];
+      for (let Z = 0; Z < F.added.length; Z++) {
+        const Y = F.added[Z];
         let Q = x.indexOf(Y);
         if (Q === -1) {
           for (let _e = 0; _e < b.length; _e++)
@@ -13192,23 +13192,23 @@ class Vg extends Ti {
       }
     }
     const z = new C(), te = new C();
-    function W(F, j, Y) {
-      z.setFromMatrixPosition(j.matrixWorld), te.setFromMatrixPosition(Y.matrixWorld);
-      const Q = z.distanceTo(te), oe = j.projectionMatrix.elements, _e = Y.projectionMatrix.elements, Re = oe[14] / (oe[10] - 1), qe = oe[14] / (oe[10] + 1), Ye = (oe[9] + 1) / oe[5], mt = (oe[9] - 1) / oe[5], N = (oe[8] - 1) / oe[0], zt = (_e[8] + 1) / _e[0], me = Re * N, De = Re * zt, ge = Q / (-N + zt), $e = ge * -N;
-      if (j.matrixWorld.decompose(F.position, F.quaternion, F.scale), F.translateX($e), F.translateZ(ge), F.matrixWorld.compose(F.position, F.quaternion, F.scale), F.matrixWorldInverse.copy(F.matrixWorld).invert(), oe[10] === -1)
-        F.projectionMatrix.copy(j.projectionMatrix), F.projectionMatrixInverse.copy(j.projectionMatrixInverse);
+    function W(F, Z, Y) {
+      z.setFromMatrixPosition(Z.matrixWorld), te.setFromMatrixPosition(Y.matrixWorld);
+      const Q = z.distanceTo(te), oe = Z.projectionMatrix.elements, _e = Y.projectionMatrix.elements, Re = oe[14] / (oe[10] - 1), qe = oe[14] / (oe[10] + 1), Ye = (oe[9] + 1) / oe[5], mt = (oe[9] - 1) / oe[5], N = (oe[8] - 1) / oe[0], zt = (_e[8] + 1) / _e[0], me = Re * N, De = Re * zt, ge = Q / (-N + zt), $e = ge * -N;
+      if (Z.matrixWorld.decompose(F.position, F.quaternion, F.scale), F.translateX($e), F.translateZ(ge), F.matrixWorld.compose(F.position, F.quaternion, F.scale), F.matrixWorldInverse.copy(F.matrixWorld).invert(), oe[10] === -1)
+        F.projectionMatrix.copy(Z.projectionMatrix), F.projectionMatrixInverse.copy(Z.projectionMatrixInverse);
       else {
         const Se = Re + ge, T = qe + ge, v = me - $e, B = De + (Q - $e), K = Ye * qe / T * Se, ee = mt * qe / T * Se;
         F.projectionMatrix.makePerspective(v, B, K, ee, Se, T), F.projectionMatrixInverse.copy(F.projectionMatrix).invert();
       }
     }
-    function re(F, j) {
-      j === null ? F.matrixWorld.copy(F.matrix) : F.matrixWorld.multiplyMatrices(j.matrixWorld, F.matrix), F.matrixWorldInverse.copy(F.matrixWorld).invert();
+    function re(F, Z) {
+      Z === null ? F.matrixWorld.copy(F.matrix) : F.matrixWorld.multiplyMatrices(Z.matrixWorld, F.matrix), F.matrixWorldInverse.copy(F.matrixWorld).invert();
     }
     this.updateCamera = function(F) {
       if (s === null) return;
-      let j = F.near, Y = F.far;
-      g.texture !== null && (g.depthNear > 0 && (j = g.depthNear), g.depthFar > 0 && (Y = g.depthFar)), y.near = P.near = R.near = j, y.far = P.far = R.far = Y, (A !== y.near || k !== y.far) && (s.updateRenderState({
+      let Z = F.near, Y = F.far;
+      g.texture !== null && (g.depthNear > 0 && (Z = g.depthNear), g.depthFar > 0 && (Y = g.depthFar)), y.near = P.near = R.near = Z, y.far = P.far = R.far = Y, (A !== y.near || k !== y.far) && (s.updateRenderState({
         depthNear: y.near,
         depthFar: y.far
       }), A = y.near, k = y.far), R.layers.mask = F.layers.mask | 2, P.layers.mask = F.layers.mask | 4, y.layers.mask = R.layers.mask | P.layers.mask;
@@ -13218,8 +13218,8 @@ class Vg extends Ti {
         re(oe[_e], Q);
       oe.length === 2 ? W(y, R, P) : y.projectionMatrix.copy(R.projectionMatrix), ce(F, y, Q);
     };
-    function ce(F, j, Y) {
-      Y === null ? F.matrix.copy(j.matrixWorld) : (F.matrix.copy(Y.matrixWorld), F.matrix.invert(), F.matrix.multiply(j.matrixWorld)), F.matrix.decompose(F.position, F.quaternion, F.scale), F.updateMatrixWorld(!0), F.projectionMatrix.copy(j.projectionMatrix), F.projectionMatrixInverse.copy(j.projectionMatrixInverse), F.isPerspectiveCamera && (F.fov = Ds * 2 * Math.atan(1 / F.projectionMatrix.elements[5]), F.zoom = 1);
+    function ce(F, Z, Y) {
+      Y === null ? F.matrix.copy(Z.matrixWorld) : (F.matrix.copy(Y.matrixWorld), F.matrix.invert(), F.matrix.multiply(Z.matrixWorld)), F.matrix.decompose(F.position, F.quaternion, F.scale), F.updateMatrixWorld(!0), F.projectionMatrix.copy(Z.projectionMatrix), F.projectionMatrixInverse.copy(Z.projectionMatrixInverse), F.isPerspectiveCamera && (F.fov = Ds * 2 * Math.atan(1 / F.projectionMatrix.elements[5]), F.zoom = 1);
     }
     this.getCamera = function() {
       return y;
@@ -13234,8 +13234,8 @@ class Vg extends Ti {
       return g.getMesh(y);
     };
     let Ee = null;
-    function Ne(F, j) {
-      if (d = j.getViewerPose(c || a), _ = j, d !== null) {
+    function Ne(F, Z) {
+      if (d = Z.getViewerPose(c || a), _ = Z, d !== null) {
         const Y = d.views;
         p !== null && (e.setRenderTargetFramebuffer(M, p.framebuffer), e.setRenderTarget(M));
         let Q = !1;
@@ -13264,9 +13264,9 @@ class Vg extends Ti {
       }
       for (let Y = 0; Y < b.length; Y++) {
         const Q = x[Y], oe = b[Y];
-        Q !== null && oe !== void 0 && oe.update(Q, j, c || a);
+        Q !== null && oe !== void 0 && oe.update(Q, Z, c || a);
       }
-      Ee && Ee(F, j), j.detectedPlanes && n.dispatchEvent({ type: "planesdetected", data: j }), _ = null;
+      Ee && Ee(F, Z), Z.detectedPlanes && n.dispatchEvent({ type: "planesdetected", data: Z }), _ = null;
     }
     const Ze = new od();
     Ze.setAnimationLoop(Ne), this.setAnimationLoop = function(F) {
@@ -13478,7 +13478,7 @@ class $g {
     const Ee = new ut(0, 0, z, te), Ne = new ut(0, 0, z, te);
     let Ze = !1;
     const F = new ad();
-    let j = !1, Y = !1;
+    let Z = !1, Y = !1;
     const Q = new pt(), oe = new pt(), _e = new C(), Re = new ut(), qe = { background: null, fog: null, environment: null, overrideMaterial: null, isScene: !0 };
     let Ye = !1;
     function mt() {
@@ -13710,13 +13710,13 @@ class $g {
         return;
       }
       if (L === !0) return;
-      if (S.matrixWorldAutoUpdate === !0 && S.updateMatrixWorld(), I.parent === null && I.matrixWorldAutoUpdate === !0 && I.updateMatrixWorld(), X.enabled === !0 && X.isPresenting === !0 && (X.cameraAutoUpdate === !0 && X.updateCamera(I), I = X.getCamera()), S.isScene === !0 && S.onBeforeRender(x, S, I, P), f = Je.get(S, b.length), f.init(I), b.push(f), oe.multiplyMatrices(I.projectionMatrix, I.matrixWorldInverse), F.setFromProjectionMatrix(oe), Y = this.localClippingEnabled, j = ie.init(this.clippingPlanes, Y), m = ve.get(S, M.length), m.init(), M.push(m), X.enabled === !0 && X.isPresenting === !0) {
+      if (S.matrixWorldAutoUpdate === !0 && S.updateMatrixWorld(), I.parent === null && I.matrixWorldAutoUpdate === !0 && I.updateMatrixWorld(), X.enabled === !0 && X.isPresenting === !0 && (X.cameraAutoUpdate === !0 && X.updateCamera(I), I = X.getCamera()), S.isScene === !0 && S.onBeforeRender(x, S, I, P), f = Je.get(S, b.length), f.init(I), b.push(f), oe.multiplyMatrices(I.projectionMatrix, I.matrixWorldInverse), F.setFromProjectionMatrix(oe), Y = this.localClippingEnabled, Z = ie.init(this.clippingPlanes, Y), m = ve.get(S, M.length), m.init(), M.push(m), X.enabled === !0 && X.isPresenting === !0) {
         const se = x.xr.getDepthSensingMesh();
         se !== null && jr(se, I, -1 / 0, x.sortObjects);
       }
-      jr(S, I, 0, x.sortObjects), m.finish(), x.sortObjects === !0 && m.sort(re, ce), Ye = X.enabled === !1 || X.isPresenting === !1 || X.hasDepthSensing() === !1, Ye && Ie.addToRenderList(m, S), this.info.render.frame++, j === !0 && ie.beginShadows();
+      jr(S, I, 0, x.sortObjects), m.finish(), x.sortObjects === !0 && m.sort(re, ce), Ye = X.enabled === !1 || X.isPresenting === !1 || X.hasDepthSensing() === !1, Ye && Ie.addToRenderList(m, S), this.info.render.frame++, Z === !0 && ie.beginShadows();
       const H = f.state.shadowsArray;
-      xe.render(H, S, I), j === !0 && ie.endShadows(), this.info.autoReset === !0 && this.info.reset();
+      xe.render(H, S, I), Z === !0 && ie.endShadows(), this.info.autoReset === !0 && this.info.reset();
       const V = m.opaque, U = m.transmissive;
       if (f.setupLights(), I.isArrayCamera) {
         const se = I.cameras;
@@ -13732,7 +13732,7 @@ class $g {
         }
       } else
         U.length > 0 && jo(V, U, S, I), Ye && Ie.render(S), Yo(m, S, I);
-      P !== null && (T.updateMultisampleRenderTarget(P), T.updateRenderTargetMipmap(P)), S.isScene === !0 && S.onAfterRender(x, S, I), ct.resetDefaultState(), E = -1, y = null, b.pop(), b.length > 0 ? (f = b[b.length - 1], j === !0 && ie.setGlobalState(x.clippingPlanes, f.state.camera)) : f = null, M.pop(), M.length > 0 ? m = M[M.length - 1] : m = null;
+      P !== null && (T.updateMultisampleRenderTarget(P), T.updateRenderTargetMipmap(P)), S.isScene === !0 && S.onAfterRender(x, S, I), ct.resetDefaultState(), E = -1, y = null, b.pop(), b.length > 0 ? (f = b[b.length - 1], Z === !0 && ie.setGlobalState(x.clippingPlanes, f.state.camera)) : f = null, M.pop(), M.length > 0 ? m = M[M.length - 1] : m = null;
     };
     function jr(S, I, H, V) {
       if (S.visible === !1) return;
@@ -13766,7 +13766,7 @@ class $g {
     }
     function Yo(S, I, H, V) {
       const U = S.opaque, se = S.transmissive, he = S.transparent;
-      f.setupLightsView(H), j === !0 && ie.setGlobalState(x.clippingPlanes, H), V && ge.viewport(A.copy(V)), U.length > 0 && Vs(U, I, H), se.length > 0 && Vs(se, I, H), he.length > 0 && Vs(he, I, H), ge.buffers.depth.setTest(!0), ge.buffers.depth.setMask(!0), ge.buffers.color.setMask(!0), ge.setPolygonOffset(!1);
+      f.setupLightsView(H), Z === !0 && ie.setGlobalState(x.clippingPlanes, H), V && ge.viewport(A.copy(V)), U.length > 0 && Vs(U, I, H), se.length > 0 && Vs(se, I, H), he.length > 0 && Vs(he, I, H), ge.buffers.depth.setTest(!0), ge.buffers.depth.setMask(!0), ge.buffers.color.setMask(!0), ge.setPolygonOffset(!1);
     }
     function jo(S, I, H, V) {
       if ((H.isScene === !0 ? H.overrideMaterial : null) !== null)
@@ -13788,7 +13788,7 @@ class $g {
       const we = x.toneMapping;
       x.toneMapping = ei;
       const Oe = V.viewport;
-      if (V.viewport !== void 0 && (V.viewport = void 0), f.setupLightsView(V), j === !0 && ie.setGlobalState(x.clippingPlanes, V), Vs(S, H, V), T.updateMultisampleRenderTarget(se), T.updateRenderTargetMipmap(se), me.has("WEBGL_multisampled_render_to_texture") === !1) {
+      if (V.viewport !== void 0 && (V.viewport = void 0), f.setupLightsView(V), Z === !0 && ie.setGlobalState(x.clippingPlanes, V), Vs(S, H, V), T.updateMultisampleRenderTarget(se), T.updateRenderTargetMipmap(se), me.has("WEBGL_multisampled_render_to_texture") === !1) {
         let He = !1;
         for (let Ae = 0, tt = I.length; Ae < tt; Ae++) {
           const dt = I[Ae], ht = dt.object, Ht = dt.geometry, it = dt.material, Pe = dt.group;
@@ -13842,7 +13842,7 @@ class $g {
       let ht = ei;
       V.toneMapped && (P === null || P.isXRRenderTarget === !0) && (ht = x.toneMapping);
       const Ht = H.morphAttributes.position || H.morphAttributes.normal || H.morphAttributes.color, it = Ht !== void 0 ? Ht.length : 0, Pe = Se.get(V), En = f.state.lights;
-      if (j === !0 && (Y === !0 || S !== y)) {
+      if (Z === !0 && (Y === !0 || S !== y)) {
         const jt = S === y && V.id === E;
         ie.setState(V, S, jt);
       }
@@ -18057,14 +18057,14 @@ function Tc(i, e) {
   var re, ce, Ee, Ne, Ze;
   const t = new Wo(), n = i.sim.windowHours * 3600, s = i.sim.stepSeconds, r = Math.floor(n / s), a = i.customerPresets.find((F) => F.id === i.activeCustomerPresetId) ?? i.customerPresets[0], o = i.rollout.find((F) => F.id === i.activeRolloutStageId) ?? i.rollout[0], l = ((re = i.scenarios) == null ? void 0 : re.find((F) => F.id === i.activeScenarioId)) ?? ((ce = i.scenarios) == null ? void 0 : ce[0]), c = l != null && l.ringEnabled ? l.relayPlaneIds ?? ["p1"] : [], d = i.relayPlanes.filter((F) => F.enabled ? l ? c.includes(F.id) : o.enabledRelayPlaneIds.includes(F.id) : !1), h = [], u = Math.ceil(a.satCount / a.planes), p = ((Ee = i.relayPlanes.find((F) => F.id === "p1")) == null ? void 0 : Ee.ltanHours) ?? 10.5, _ = (i.customerLtanOffsetMinutes ?? 45) / 60, g = a.ltanHours ?? p + _;
   for (let F = 0; F < a.planes; F++) {
-    const j = F * a.raanSpreadDeg / a.planes, Y = a.sunSynchronous ? hn(a.altitudeKm) : a.inclinationDeg;
+    const Z = F * a.raanSpreadDeg / a.planes, Y = a.sunSynchronous ? hn(a.altitudeKm) : a.inclinationDeg;
     h.push({
       id: `cust-plane-${F}`,
       name: `${a.label} Plane ${F + 1}`,
       altitudeKm: a.altitudeKm,
       inclinationDeg: Y,
       sunSynchronous: a.sunSynchronous,
-      raanDeg: a.raanSpreadDeg > 0 ? j : void 0,
+      raanDeg: a.raanSpreadDeg > 0 ? Z : void 0,
       ltanHours: a.sunSynchronous ? (g + F * 24 / a.planes) % 24 : void 0,
       satsInPlane: u
     });
@@ -18072,19 +18072,19 @@ function Tc(i, e) {
   const m = Vr(i), f = new Set(d.map((F) => F.id)), M = m.filter((F) => f.has(F.id)), b = [], x = [], L = [], w = [], R = [];
   let P = 0;
   for (let F = 0; F < a.planes; F++)
-    for (let j = 0; j < u; j++)
+    for (let Z = 0; Z < u; Z++)
       P < a.satCount && (R.push(`cust-sat-${P}`), P++);
   const E = /* @__PURE__ */ new Map(), y = /* @__PURE__ */ new Map(), A = /* @__PURE__ */ new Map(), k = /* @__PURE__ */ new Map(), O = [], G = [];
   let $ = 0, z = 0;
   for (let F = 0; F <= r; F++) {
-    const j = F * s;
-    b.push(j);
-    const Y = us(j, i.sim.epochUTC), Q = [];
+    const Z = F * s;
+    b.push(Z);
+    const Y = us(Z, i.sim.epochUTC), Q = [];
     let oe = 0;
     for (let me = 0; me < h.length; me++) {
       const De = h[me];
       for (let ge = 0; ge < De.satsInPlane && !(oe >= a.satCount); ge++) {
-        const $e = t.propagate(De, ge, j), Se = ri($e, Y), T = Mc(Se);
+        const $e = t.propagate(De, ge, Z), Se = ri($e, Y), T = Mc(Se);
         Q.push({
           id: R[oe],
           name: `Customer Sat ${oe + 1}`,
@@ -18102,7 +18102,7 @@ function Tc(i, e) {
     for (let me = 0; me < M.length; me++) {
       const De = M[me];
       for (let ge = 0; ge < De.satsInPlane; ge++) {
-        const $e = t.propagate(De, ge, j), Se = ri($e, Y), T = Mc(Se);
+        const $e = t.propagate(De, ge, Z), Se = ri($e, Y), T = Mc(Se);
         _e.push({
           id: `relay-${De.id}-${ge}`,
           name: `${De.name} #${ge + 1}`,
@@ -18129,17 +18129,17 @@ function Tc(i, e) {
     for (const me of R) {
       const De = mt.get(me), ge = De !== void 0, $e = E.get(me) ?? !1;
       if (ge && !$e)
-        E.set(me, !0), y.set(me, j);
+        E.set(me, !0), y.set(me, Z);
       else if (!ge && $e) {
         E.set(me, !1);
-        const Se = y.get(me) ?? j;
+        const Se = y.get(me) ?? Z;
         O.push({
           customerSatId: me,
           targetId: De ? De.groundStationId : "oxg-network",
           targetType: "relay",
           startTimeSec: Se,
-          endTimeSec: j,
-          durationSec: j - Se,
+          endTimeSec: Z,
+          durationSec: Z - Se,
           isDirectGround: !1
         });
       }
@@ -18147,17 +18147,17 @@ function Tc(i, e) {
     for (const me of R) {
       const De = N.get(me), ge = De !== void 0, $e = A.get(me) ?? !1;
       if (ge && !$e)
-        A.set(me, !0), k.set(me, j);
+        A.set(me, !0), k.set(me, Z);
       else if (!ge && $e) {
         A.set(me, !1);
-        const Se = k.get(me) ?? j;
+        const Se = k.get(me) ?? Z;
         G.push({
           customerSatId: me,
           targetId: De ? De.groundStationId : "ground-network",
           targetType: "ground",
           startTimeSec: Se,
-          endTimeSec: j,
-          durationSec: j - Se,
+          endTimeSec: Z,
+          durationSec: Z - Se,
           isDirectGround: !0
         });
       }
@@ -18165,26 +18165,26 @@ function Tc(i, e) {
   }
   for (const F of R) {
     if (E.get(F)) {
-      const j = y.get(F) ?? 0;
+      const Z = y.get(F) ?? 0;
       O.push({
         customerSatId: F,
         targetId: "oxg-network",
         targetType: "relay",
-        startTimeSec: j,
+        startTimeSec: Z,
         endTimeSec: n,
-        durationSec: n - j,
+        durationSec: n - Z,
         isDirectGround: !1
       });
     }
     if (A.get(F)) {
-      const j = k.get(F) ?? 0;
+      const Z = k.get(F) ?? 0;
       G.push({
         customerSatId: F,
         targetId: "ground-network",
         targetType: "ground",
-        startTimeSec: j,
+        startTimeSec: Z,
         endTimeSec: n,
-        durationSec: n - j,
+        durationSec: n - Z,
         isDirectGround: !0
       });
     }
@@ -18643,7 +18643,7 @@ const iv = [
 ];
 class sv {
   constructor(e) {
-    Z(this, "group");
+    j(this, "group");
     this.group = new un(), e.add(this.group), this.buildMarkers(), this.setVisible(!1);
   }
   buildMarkers() {
@@ -18907,30 +18907,30 @@ function ov() {
 }
 class lv {
   constructor(e, t = Ro) {
-    Z(this, "scene");
-    Z(this, "camera");
-    Z(this, "renderer");
-    Z(this, "controls");
-    Z(this, "earthGroup");
-    Z(this, "earthMesh");
-    Z(this, "earthMat", null);
-    Z(this, "atmosphereMesh");
-    Z(this, "atmosphereMat");
-    Z(this, "geoDebug");
-    Z(this, "config");
-    Z(this, "container");
-    Z(this, "animationFrameId", null);
-    Z(this, "onRenderCallbacks", []);
-    Z(this, "tSec", 0);
-    Z(this, "isUserInteracting", !1);
-    Z(this, "lastInteractionTime", 0);
-    Z(this, "autoRotateEnabled", !0);
+    j(this, "scene");
+    j(this, "camera");
+    j(this, "renderer");
+    j(this, "controls");
+    j(this, "earthGroup");
+    j(this, "earthMesh");
+    j(this, "earthMat", null);
+    j(this, "atmosphereMesh");
+    j(this, "atmosphereMat");
+    j(this, "geoDebug");
+    j(this, "config");
+    j(this, "container");
+    j(this, "animationFrameId", null);
+    j(this, "onRenderCallbacks", []);
+    j(this, "tSec", 0);
+    j(this, "isUserInteracting", !1);
+    j(this, "lastInteractionTime", 0);
+    j(this, "autoRotateEnabled", !0);
     // Camera Fly-to animation state
-    Z(this, "isFlyingTo", !1);
-    Z(this, "flyStartCamPos", new C());
-    Z(this, "flyTargetCamPos", new C());
-    Z(this, "flyStartTime", 0);
-    Z(this, "flyDurationMs", 1500);
+    j(this, "isFlyingTo", !1);
+    j(this, "flyStartCamPos", new C());
+    j(this, "flyTargetCamPos", new C());
+    j(this, "flyStartTime", 0);
+    j(this, "flyDurationMs", 1500);
     this.container = e, this.config = { ...Ro, ...t }, this.scene = new qg(), this.scene.background = new Be(131848);
     const n = e.clientWidth || window.innerWidth, s = e.clientHeight || window.innerHeight;
     this.camera = new Jt(45, n / s, 0.01, 100);
@@ -19736,11 +19736,11 @@ class Gr extends uv {
 }
 class hv {
   constructor(e) {
-    Z(this, "group");
-    Z(this, "arcLines", /* @__PURE__ */ new Map());
-    Z(this, "fullOrbitLines", []);
-    Z(this, "propagator");
-    Z(this, "relayRingSegmentLines", []);
+    j(this, "group");
+    j(this, "arcLines", /* @__PURE__ */ new Map());
+    j(this, "fullOrbitLines", []);
+    j(this, "propagator");
+    j(this, "relayRingSegmentLines", []);
     this.group = new un(), e.add(this.group), this.propagator = new Wo(), typeof window < "u" && window.addEventListener("resize", () => this.onResize());
   }
   onResize() {
@@ -19909,14 +19909,14 @@ class hv {
 }
 class fv {
   constructor(e) {
-    Z(this, "group");
-    Z(this, "customerSprites", []);
-    Z(this, "relaySprites", []);
-    Z(this, "relayMesh", null);
-    Z(this, "planeColorMap", /* @__PURE__ */ new Map());
-    Z(this, "glowTexture");
-    Z(this, "tooltipElem", null);
-    Z(this, "currentHoveredSat", null);
+    j(this, "group");
+    j(this, "customerSprites", []);
+    j(this, "relaySprites", []);
+    j(this, "relayMesh", null);
+    j(this, "planeColorMap", /* @__PURE__ */ new Map());
+    j(this, "glowTexture");
+    j(this, "tooltipElem", null);
+    j(this, "currentHoveredSat", null);
     this.group = new un(), e.add(this.group), this.glowTexture = this.createGlowTexture(), this.initTooltip();
   }
   getCurrentHoveredSat() {
@@ -20072,12 +20072,12 @@ function pv(i) {
 }
 class mv {
   constructor(e) {
-    Z(this, "group");
-    Z(this, "stationItems", []);
-    Z(this, "stationTexture");
-    Z(this, "tooltipElem", null);
-    Z(this, "showStations", !1);
-    Z(this, "showLabels", !1);
+    j(this, "group");
+    j(this, "stationItems", []);
+    j(this, "stationTexture");
+    j(this, "tooltipElem", null);
+    j(this, "showStations", !1);
+    j(this, "showLabels", !1);
     this.group = new un(), e.add(this.group), this.stationTexture = this.createCircleInSquareTexture(), this.tooltipElem = document.createElement("div"), this.tooltipElem.className = "oxg-sat-tooltip hidden", document.body.appendChild(this.tooltipElem);
   }
   /**
@@ -20169,8 +20169,8 @@ class mv {
 }
 class gv {
   constructor(e) {
-    Z(this, "group");
-    Z(this, "linkPairs", /* @__PURE__ */ new Map());
+    j(this, "group");
+    j(this, "linkPairs", /* @__PURE__ */ new Map());
     this.group = new un(), e.add(this.group), typeof window < "u" && window.addEventListener("resize", () => this.onResize());
   }
   onResize() {
@@ -20248,8 +20248,8 @@ class gv {
 }
 class _v {
   constructor(e) {
-    Z(this, "group");
-    Z(this, "linkPairs", /* @__PURE__ */ new Map());
+    j(this, "group");
+    j(this, "linkPairs", /* @__PURE__ */ new Map());
     this.group = new un(), e.add(this.group), typeof window < "u" && window.addEventListener("resize", () => this.onResize());
   }
   onResize() {
@@ -20348,7 +20348,7 @@ function vv(i) {
 }
 class xv {
   constructor(e) {
-    Z(this, "element");
+    j(this, "element");
     this.element = document.createElement("div"), this.element.className = "oxg-metrics-dock", e.appendChild(this.element);
   }
   updateMetrics(e, t) {
@@ -20400,18 +20400,18 @@ class xv {
 }
 class yv {
   constructor(e, t, n, s = yd) {
-    Z(this, "element");
-    Z(this, "config");
-    Z(this, "uiFlags");
-    Z(this, "isPlaying", !0);
-    Z(this, "speedMultiplier", 600);
+    j(this, "element");
+    j(this, "config");
+    j(this, "uiFlags");
+    j(this, "isPlaying", !0);
+    j(this, "speedMultiplier", 600);
     // 600x default
-    Z(this, "currentTSec", 0);
-    Z(this, "isMobileExpanded", !1);
-    Z(this, "onConfigChangeCb");
-    Z(this, "onPlaybackChangeCb");
-    Z(this, "onScrubCb");
-    Z(this, "onResetViewCb");
+    j(this, "currentTSec", 0);
+    j(this, "isMobileExpanded", !1);
+    j(this, "onConfigChangeCb");
+    j(this, "onPlaybackChangeCb");
+    j(this, "onScrubCb");
+    j(this, "onResetViewCb");
     this.config = t, this.uiFlags = s, this.onConfigChangeCb = n.onConfigChange, this.onPlaybackChangeCb = n.onPlaybackChange, this.onScrubCb = n.onScrub, this.onResetViewCb = n.onResetView, this.element = document.createElement("div"), this.element.className = "oxg-controls-dock", e.appendChild(this.element), this.render();
   }
   setConfig(e) {
@@ -20486,8 +20486,8 @@ class yv {
 }
 class Sv {
   constructor(e) {
-    Z(this, "element");
-    Z(this, "isVisible", !1);
+    j(this, "element");
+    j(this, "isVisible", !1);
     this.element = document.createElement("div"), this.element.className = "oxg-drawer-panel hidden", e.appendChild(this.element);
   }
   toggle() {
@@ -20549,7 +20549,7 @@ class Sv {
 }
 class bv {
   constructor(e) {
-    Z(this, "modalOverlay");
+    j(this, "modalOverlay");
     this.modalOverlay = document.createElement("div"), this.modalOverlay.className = "oxg-modal-overlay hidden", this.modalOverlay.innerHTML = `
       <div class="oxg-modal-card">
         <div class="oxg-modal-header">
@@ -20601,9 +20601,9 @@ class bv {
 }
 class Mv {
   constructor(e) {
-    Z(this, "element");
-    Z(this, "resultA", null);
-    Z(this, "resultB", null);
+    j(this, "element");
+    j(this, "resultA", null);
+    j(this, "resultB", null);
     this.element = document.createElement("div"), this.element.className = "oxg-ab-compare-container hidden", e.appendChild(this.element);
   }
   setResults(e, t) {
@@ -20651,7 +20651,7 @@ class Mv {
 }
 class Ev {
   constructor(e, t = "/api/request-simulation") {
-    Z(this, "element");
+    j(this, "element");
     this.element = document.createElement("div"), this.element.className = "oxg-modal-overlay hidden", this.element.innerHTML = `
       <div class="oxg-modal-card oxg-cta-card">
         <div class="oxg-modal-header">
@@ -20711,8 +20711,8 @@ class Ev {
 }
 class Tv {
   constructor(e, t, n) {
-    Z(this, "element");
-    Z(this, "onCustomOrbitAdd");
+    j(this, "element");
+    j(this, "onCustomOrbitAdd");
     this.onCustomOrbitAdd = n, this.element = document.createElement("div"), this.element.className = "oxg-modal-overlay hidden", this.element.innerHTML = `
       <div class="oxg-modal-card oxg-custom-orbit-card">
         <div class="oxg-modal-header">
@@ -20860,9 +20860,9 @@ function Ic(i, e, t) {
 }
 class wv {
   constructor(e, t) {
-    Z(this, "container");
-    Z(this, "globeView");
-    Z(this, "isVisible", !1);
+    j(this, "container");
+    j(this, "globeView");
+    j(this, "isVisible", !1);
     this.globeView = t;
     const n = new URLSearchParams(window.location.search);
     this.isVisible = n.has("debug") && n.get("debug") === "1", this.container = document.createElement("div"), this.container.className = "oxg-debug-panel", this.isVisible || (this.container.style.display = "none"), e.appendChild(this.container), this.render();
@@ -21300,8 +21300,8 @@ class wv {
         }, 2e3);
       });
     });
-    const j = this.container.querySelector("#btn-sun-view");
-    j && j.addEventListener("click", () => {
+    const Z = this.container.querySelector("#btn-sun-view");
+    Z && Z.addEventListener("click", () => {
       this.globeView.setSunView();
     });
   }
@@ -21312,12 +21312,12 @@ class wv {
 }
 class Av {
   constructor(e, t, n, s) {
-    Z(this, "element");
-    Z(this, "presets");
-    Z(this, "activePresetId");
-    Z(this, "onSelect");
-    Z(this, "isOpen", !1);
-    Z(this, "documentClickHandler");
+    j(this, "element");
+    j(this, "presets");
+    j(this, "activePresetId");
+    j(this, "onSelect");
+    j(this, "isOpen", !1);
+    j(this, "documentClickHandler");
     this.presets = t, this.activePresetId = n, this.onSelect = s, this.element = document.createElement("div"), this.element.className = "oxg-preset-selector-container", e.appendChild(this.element), this.documentClickHandler = (r) => {
       this.isOpen && !this.element.contains(r.target) && (this.isOpen = !1, this.render());
     }, document.addEventListener("click", this.documentClickHandler), this.render();
@@ -21375,10 +21375,10 @@ class Av {
 }
 class Rv {
   constructor(e, t, n, s) {
-    Z(this, "element");
-    Z(this, "steps");
-    Z(this, "activeStepIndex", 0);
-    Z(this, "onSelectStep");
+    j(this, "element");
+    j(this, "steps");
+    j(this, "activeStepIndex", 0);
+    j(this, "onSelectStep");
     this.steps = t, this.onSelectStep = s;
     const r = this.steps.findIndex((a) => a.id === n);
     this.activeStepIndex = r >= 0 ? r : 0, this.element = document.createElement("div"), this.element.className = "oxg-rollout-timeline-container", e.appendChild(this.element), this.render(), this.bindEvents();
@@ -21552,39 +21552,70 @@ class Rv {
   }
 }
 class Cv {
+  constructor(e) {
+    j(this, "element");
+    this.element = document.createElement("div"), this.element.className = "oxg-legend-dock", e.appendChild(this.element), this.render();
+  }
+  render() {
+    this.element.innerHTML = `
+      <div class="oxg-legend-container">
+        <div class="oxg-legend-header">MAP LEGEND</div>
+        <div class="oxg-legend-grid">
+          <div class="oxg-legend-item">
+            <span class="oxg-legend-symbol oxg-symbol-gs" title="Ground Station"></span>
+            <span class="oxg-legend-text">Ground Stations</span>
+          </div>
+          <div class="oxg-legend-item">
+            <span class="oxg-legend-symbol oxg-symbol-oxg-sat" title="OXG Relay Satellite"></span>
+            <span class="oxg-legend-text">OXG Satellites</span>
+          </div>
+          <div class="oxg-legend-item">
+            <div class="oxg-symbol-cust-wrap">
+              <span class="oxg-legend-symbol oxg-symbol-cust-maroon" title="Out of Contact (Maroon)"></span>
+              <span class="oxg-legend-symbol oxg-symbol-cust-red" title="Connected (Bright Red)"></span>
+            </div>
+            <span class="oxg-legend-text">Your Satellite <span class="oxg-legend-status-sub">(Offline / Connected)</span></span>
+          </div>
+        </div>
+      </div>
+    `;
+  }
+}
+class Pv {
   constructor(e, t, n) {
-    Z(this, "container");
-    Z(this, "config");
-    Z(this, "uiFlags");
-    Z(this, "simResult", null);
-    Z(this, "globeView");
-    Z(this, "orbitsMesh");
-    Z(this, "satellitesMesh");
-    Z(this, "groundStationsMesh");
-    Z(this, "linksMesh");
-    Z(this, "groundLinksMesh");
-    Z(this, "headlineMetricsPanel");
-    Z(this, "presetSelectorPanel");
-    Z(this, "rolloutTimeline");
-    Z(this, "controlsBar");
-    Z(this, "parametersPanel");
-    Z(this, "assumptionsModal");
-    Z(this, "abComparePanel");
-    Z(this, "ctaModal");
-    Z(this, "customOrbitForm");
-    Z(this, "debugPanel");
-    Z(this, "currentStepIndex", 0);
-    Z(this, "isPlaying", !0);
-    Z(this, "speedMultiplier", 600);
-    Z(this, "lastFrameTimestamp", 0);
-    Z(this, "isGeoDebugActive", !1);
-    Z(this, "isRingTransitioning", !1);
-    Z(this, "ringTransitionStartTime", 0);
+    j(this, "container");
+    j(this, "config");
+    j(this, "uiFlags");
+    j(this, "simResult", null);
+    j(this, "globeView");
+    j(this, "orbitsMesh");
+    j(this, "satellitesMesh");
+    j(this, "groundStationsMesh");
+    j(this, "linksMesh");
+    j(this, "groundLinksMesh");
+    j(this, "headlineMetricsPanel");
+    j(this, "presetSelectorPanel");
+    j(this, "mapLegendPanel");
+    j(this, "rolloutTimeline");
+    j(this, "controlsBar");
+    j(this, "parametersPanel");
+    j(this, "assumptionsModal");
+    j(this, "abComparePanel");
+    j(this, "ctaModal");
+    j(this, "customOrbitForm");
+    j(this, "debugPanel");
+    j(this, "currentStepIndex", 0);
+    j(this, "isPlaying", !0);
+    j(this, "speedMultiplier", 600);
+    j(this, "lastFrameTimestamp", 0);
+    j(this, "isGeoDebugActive", !1);
+    j(this, "isRingTransitioning", !1);
+    j(this, "ringTransitionStartTime", 0);
     this.container = e, this.container.className = "oxg-mission-console", this.uiFlags = n ?? yd;
     const s = t ?? Sd;
     if (this.config = F_(s, window.location.search), window.location.search !== "" && !window.location.search.includes("debug=1")) {
-      const _ = window.location.pathname + window.location.hash;
-      window.history.replaceState(null, "", _);
+      const g = window.location.pathname + window.location.hash;
+      window.history.replaceState(null, "", g);
     }
     this.container.innerHTML = `
       <!-- SpaceX-Style Minimalist Orbital Loader -->
@@ -21597,6 +21628,7 @@ class Cv {
       <div id="oxg-header-mount"></div>
       <div id="oxg-metrics-mount"></div>
       <div id="oxg-preset-mount"></div>
+      <div id="oxg-legend-mount"></div>
       <div id="oxg-controls-mount"></div>
       <div id="oxg-timeline-mount"></div>
       <div id="oxg-parameters-mount"></div>
@@ -21626,35 +21658,37 @@ class Cv {
       l,
       this.config.customerPresets,
       this.config.activeCustomerPresetId,
-      (_) => {
-        this.config.activeCustomerPresetId = _, this.onConfigChange(this.config);
+      (g) => {
+        this.config.activeCustomerPresetId = g, this.onConfigChange(this.config);
       }
     );
-    const c = this.container.querySelector("#oxg-timeline-mount"), d = (this.config.scenarios ?? []).filter((_) => _.id !== "india_dual_ring");
+    const c = this.container.querySelector("#oxg-legend-mount");
+    this.mapLegendPanel = new Cv(c);
+    const d = this.container.querySelector("#oxg-timeline-mount"), h = (this.config.scenarios ?? []).filter((g) => g.id !== "india_dual_ring");
     this.rolloutTimeline = new Rv(
-      c,
       d,
+      h,
       this.config.activeScenarioId,
-      (_) => {
-        this.startRingTransition(), this.config.activeScenarioId = _, this.onConfigChange(this.config);
+      (g) => {
+        this.startRingTransition(), this.config.activeScenarioId = g, this.onConfigChange(this.config);
       }
     );
-    const h = this.container.querySelector("#oxg-controls-mount");
+    const u = this.container.querySelector("#oxg-controls-mount");
     this.controlsBar = new yv(
-      h,
+      u,
       this.config,
       {
-        onConfigChange: (_) => this.onConfigChange(_),
-        onPlaybackChange: (_, g) => {
-          this.isPlaying = _, this.speedMultiplier = g;
+        onConfigChange: (g) => this.onConfigChange(g),
+        onPlaybackChange: (g, m) => {
+          this.isPlaying = g, this.speedMultiplier = m;
         },
-        onScrub: (_) => {
-          var m;
-          const g = Math.min(
-            (((m = this.simResult) == null ? void 0 : m.timestampsSec.length) ?? 1) - 1,
-            Math.floor(_ / (this.config.sim.stepSeconds ?? 30))
+        onScrub: (g) => {
+          var f;
+          const m = Math.min(
+            (((f = this.simResult) == null ? void 0 : f.timestampsSec.length) ?? 1) - 1,
+            Math.floor(g / (this.config.sim.stepSeconds ?? 30))
           );
-          this.currentStepIndex = g;
+          this.currentStepIndex = m;
         },
         onResetView: () => {
           this.globeView.focusIndia();
@@ -21662,15 +21696,15 @@ class Cv {
       },
       this.uiFlags
     );
-    const u = this.container.querySelector("#oxg-parameters-mount");
-    this.parametersPanel = new Sv(u);
-    const p = this.container.querySelector("#oxg-modals-mount");
-    this.assumptionsModal = new bv(p), this.abComparePanel = new Mv(p), this.ctaModal = new Ev(p), this.customOrbitForm = new Tv(p, this.config, (_) => {
-      this.config.customerPresets.push(_), this.config.activeCustomerPresetId = _.id, this.presetSelectorPanel.updatePresets(this.config.customerPresets, this.config.activeCustomerPresetId), this.onConfigChange(this.config);
+    const p = this.container.querySelector("#oxg-parameters-mount");
+    this.parametersPanel = new Sv(p);
+    const _ = this.container.querySelector("#oxg-modals-mount");
+    this.assumptionsModal = new bv(_), this.abComparePanel = new Mv(_), this.ctaModal = new Ev(_), this.customOrbitForm = new Tv(_, this.config, (g) => {
+      this.config.customerPresets.push(g), this.config.activeCustomerPresetId = g.id, this.presetSelectorPanel.updatePresets(this.config.customerPresets, this.config.activeCustomerPresetId), this.onConfigChange(this.config);
     }), this.debugPanel = new wv(this.container, this.globeView), this.bindEvents(), this.recomputeSimulation(), this.globeView.addRenderCallback(this.updatePlaybackLoop.bind(this)), requestAnimationFrame(() => {
       setTimeout(() => {
-        const _ = this.container.querySelector("#oxg-demo-loader");
-        _ && (_.style.opacity = "0", setTimeout(() => _.remove(), 500));
+        const g = this.container.querySelector("#oxg-demo-loader");
+        g && (g.style.opacity = "0", setTimeout(() => g.remove(), 500));
       }, 250);
     }), window.app = this, window.globeView = this.globeView, window.debugPanel = this.debugPanel;
   }
@@ -21861,21 +21895,21 @@ class Cv {
     }
   }
 }
-const Pv = {
-  mount: (i, e) => new Cv(i, e ?? Sd)
+const Dv = {
+  mount: (i, e) => new Pv(i, e ?? Sd)
 };
 function Ed() {
   if (typeof document > "u") return;
   const i = document.getElementById("oxg-sim-app") || document.getElementById("app");
   if (i && !i.__oxg_mounted__) {
     i.__oxg_mounted__ = !0;
-    const e = Pv.mount(i);
+    const e = Dv.mount(i);
     window.app = e, window.mainApp = e;
   }
 }
 Ed();
 typeof document < "u" && document.readyState === "loading" && document.addEventListener("DOMContentLoaded", Ed);
 export {
-  Pv as OXGSim,
+  Dv as OXGSim,
   Ed as autoMount
 };
