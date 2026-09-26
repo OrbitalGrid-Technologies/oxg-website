@@ -20566,8 +20566,8 @@ class bv {
 
           <div class="oxg-assumption-block">
             <h3>2. Link Feasibility & Line-of-Sight</h3>
-            <p><strong>Ground Links:</strong> Feasible if satellite elevation (ge 5^circ) mask and range (le 3000	ext{ km}).</p>
-            <p><strong>Cross-Links (Customer-to-Relay & Relay-to-Relay):</strong> Feasible if range (le) maxRangeKm, antenna steerability constraints met, and line-of-sight ray clears Earth's surface by at least <code>earthGrazeMarginKm = 100 km</code>.</p>
+            <p><strong>Customer Access Links (5G NTN):</strong> Customer satellites connect to OXG floating base stations via standardized 5G Non-Terrestrial Network (NTN) RF links (elevation (ge 5^circ), range (le 3000	ext{ km}), no optical terminal required on customer spacecraft).</p>
+            <p><strong>OXG Relay Mesh Backhaul (OISL):</strong> High-capacity Optical Inter-Satellite Links (OISL) form a laser mesh backbone strictly between OXG satellites, clearing Earth's surface by at least <code>earthGrazeMarginKm = 100 km</code>.</p>
           </div>
 
           <div class="oxg-assumption-block">
