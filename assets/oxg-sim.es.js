@@ -21638,8 +21638,10 @@ class Pv {
       <div id="oxg-globe-container" class="oxg-globe-container"></div>
       <div id="oxg-header-mount"></div>
       <div id="oxg-metrics-mount"></div>
-      <div id="oxg-preset-mount"></div>
-      <div id="oxg-legend-mount"></div>
+      <div class="oxg-left-sidebar">
+        <div id="oxg-preset-mount"></div>
+        <div id="oxg-legend-mount"></div>
+      </div>
       <div id="oxg-controls-mount"></div>
       <div id="oxg-timeline-mount"></div>
       <div id="oxg-parameters-mount"></div>
