@@ -198,10 +198,11 @@ body {
 @media (max-width: 768px) {
   .section-demo #oxg-legend-mount,
   .section-demo .oxg-legend-dock {
-    left: 12px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
     bottom: calc(env(safe-area-inset-bottom, 0px) + 82px) !important;
     z-index: 50 !important;
-    width: auto !important;
+    width: max-content !important;
   }
 
   .section-demo .oxg-legend-container {
