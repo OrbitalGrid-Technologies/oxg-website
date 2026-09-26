@@ -21563,38 +21563,29 @@ class Cv {
         <div class="oxg-legend-grid">
           <!-- Ground Station Marker (Circle within Square) -->
           <div class="oxg-legend-item" title="Ground Station">
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" class="oxg-legend-icon">
-              <rect x="1" y="1" width="12" height="12" stroke="#ffffff" stroke-width="1.5" fill="none"/>
-              <circle cx="7" cy="7" r="3" fill="#ffffff"/>
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" class="oxg-legend-icon">
+              <rect x="0.5" y="0.5" width="11" height="11" stroke="#ffffff" stroke-width="1.2" fill="none"/>
+              <circle cx="6" cy="6" r="2.5" fill="#ffffff"/>
             </svg>
             <span class="oxg-legend-label">Ground Station</span>
           </div>
 
           <!-- OXG Relay Satellite (-- o -- white) -->
-          <div class="oxg-legend-item" title="OXG Relay Satellite">
-            <svg width="24" height="12" viewBox="0 0 24 12" fill="none" class="oxg-legend-icon">
-              <line x1="1" y1="6" x2="23" y2="6" stroke="#ffffff" stroke-width="1.5" opacity="0.6"/>
-              <circle cx="12" cy="6" r="3" fill="#ffffff"/>
+          <div class="oxg-legend-item" title="OXG Relay Satellites">
+            <svg width="20" height="10" viewBox="0 0 20 10" fill="none" class="oxg-legend-icon oxg-sat-icon">
+              <line x1="0" y1="5" x2="20" y2="5" stroke="#ffffff" stroke-width="1.2" opacity="0.6"/>
+              <circle cx="10" cy="5" r="2.5" fill="#ffffff"/>
             </svg>
             <span class="oxg-legend-label">OXG Satellites</span>
           </div>
 
-          <!-- Customer Satellite: Offline (-- o -- crimson maroon) -->
-          <div class="oxg-legend-item" title="Your Satellite - Out of Contact">
-            <svg width="24" height="12" viewBox="0 0 24 12" fill="none" class="oxg-legend-icon">
-              <line x1="1" y1="6" x2="23" y2="6" stroke="#D32F2F" stroke-width="1.8"/>
-              <circle cx="12" cy="6" r="3.5" fill="#D32F2F"/>
+          <!-- Customer Satellite (-- o -- red/maroon) -->
+          <div class="oxg-legend-item" title="Your Satellite">
+            <svg width="20" height="10" viewBox="0 0 20 10" fill="none" class="oxg-legend-icon oxg-sat-icon">
+              <line x1="0" y1="5" x2="20" y2="5" stroke="#FF1744" stroke-width="2"/>
+              <circle cx="10" cy="5" r="3" fill="#FF1744"/>
             </svg>
-            <span class="oxg-legend-label">Your Sat <span class="oxg-legend-sub">(Offline)</span></span>
-          </div>
-
-          <!-- Customer Satellite: Connected (-- o -- bright red) -->
-          <div class="oxg-legend-item" title="Your Satellite - Connected">
-            <svg width="24" height="12" viewBox="0 0 24 12" fill="none" class="oxg-legend-icon">
-              <line x1="1" y1="6" x2="23" y2="6" stroke="#FF1744" stroke-width="2.5"/>
-              <circle cx="12" cy="6" r="4" fill="#FF1744"/>
-            </svg>
-            <span class="oxg-legend-label">Your Sat <span class="oxg-legend-sub">(Connected)</span></span>
+            <span class="oxg-legend-label">Your Satellite</span>
           </div>
         </div>
       </div>
