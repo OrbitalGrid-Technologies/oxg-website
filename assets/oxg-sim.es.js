@@ -19757,9 +19757,7 @@ class hv {
   updateCustomerArc(e, t, n, s = !0, r = !0) {
     const a = n ?? {
       behindDeg: 40,
-      aheadDeg: 15,
-      widthPx: 1.8,
-      maxOpacity: 0.7
+      aheadDeg: 15
     };
     if (!s || e.length === 0) {
       for (const _ of this.arcLines.values())
@@ -19769,7 +19767,7 @@ class hv {
     const o = new Set(e.map((_) => _.id));
     for (const [_, g] of this.arcLines.entries())
       o.has(_) || (g.visible = !1);
-    const l = 80, c = r ? new Be("#FF1744") : new Be("#440c14"), d = r ? a.maxOpacity ?? 0.7 : 0.35, h = r ? a.widthPx ?? 1.8 : 1.2, u = typeof window < "u" ? window.innerWidth : 1920, p = typeof window < "u" ? window.innerHeight : 1080;
+    const l = 80, c = r ? new Be("#FF1744") : new Be("#330810"), d = r ? 0.95 : 0.2, h = r ? 3.2 : 1, u = typeof window < "u" ? window.innerWidth : 1920, p = typeof window < "u" ? window.innerHeight : 1080;
     for (const _ of e) {
       let g = this.arcLines.get(_.id);
       if (!g) {
