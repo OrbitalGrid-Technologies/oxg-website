@@ -113,7 +113,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   if (careersGrid) {
-    fetch('jobs.json?v=2')
+    fetch('jobs.json?v=3')
       .then(res => {
         if (!res.ok) throw new Error('Failed to load jobs');
         return res.json();
